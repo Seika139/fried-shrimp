@@ -21,12 +21,12 @@ OpenClaw 可以使用 Perplexity Sonar 作为 `web_search` 工具。你可以通
 
 ### Perplexity（直连）
 
-- Base URL：https://api.perplexity.ai
+- Base URL：<https://api.perplexity.ai>
 - 环境变量：`PERPLEXITY_API_KEY`
 
 ### OpenRouter（替代方案）
 
-- Base URL：https://openrouter.ai/api/v1
+- Base URL：<https://openrouter.ai/api/v1>
 - 环境变量：`OPENROUTER_API_KEY`
 - 支持预付费/加密货币积分。
 

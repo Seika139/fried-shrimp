@@ -34,6 +34,7 @@ x-i18n:
 1. 在你的 Mac 上安装 BlueBubbles 服务器（按照 [bluebubbles.app/install](https://bluebubbles.app/install) 的说明操作）。
 2. 在 BlueBubbles 配置中，启用 web API 并设置密码。
 3. 运行 `openclaw onboard` 并选择 BlueBubbles，或手动配置：
+
    ```json5
    {
      channels: {
@@ -46,6 +47,7 @@ x-i18n:
      },
    }
    ```
+
 4. 将 BlueBubbles webhook 指向你的 Gateway 网关（示例：`https://your-gateway-host:3000/bluebubbles-webhook?password=<password>`）。
 5. 启动 Gateway 网关；它将注册 webhook 处理程序并开始配对。
 

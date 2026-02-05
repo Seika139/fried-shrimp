@@ -19,7 +19,7 @@ Ollama 是一个本地 LLM 运行时，可以轻松在你的机器上运行开�
 
 ## 快速开始
 
-1. 安装 Ollama：https://ollama.ai
+1. 安装 Ollama：<https://ollama.ai>
 
 2. 拉取模型：
 
@@ -31,7 +31,7 @@ ollama pull qwen2.5-coder:32b
 ollama pull deepseek-r1:32b
 ```
 
-3. 为 OpenClaw 启用 Ollama（任意值即可；Ollama 不需要真实密钥）：
+1. 为 OpenClaw 启用 Ollama（任意值即可；Ollama 不需要真实密钥）：
 
 ```bash
 # 设置环境变量
@@ -41,7 +41,7 @@ export OLLAMA_API_KEY="ollama-local"
 openclaw config set models.providers.ollama.apiKey "ollama-local"
 ```
 
-4. 使用 Ollama 模型：
+1. 使用 Ollama 模型：
 
 ```json5
 {

@@ -33,7 +33,7 @@ x-i18n:
 - [ ] 确认包元数据（name、description、repository、keywords、license）以及 `bin` 映射指向 [`openclaw.mjs`](https://github.com/openclaw/openclaw/blob/main/openclaw.mjs) 作为 `openclaw`。
 - [ ] 如果依赖项有变化，运行 `pnpm install` 确保 `pnpm-lock.yaml` 是最新的。
 
-2. **构建和产物**
+1. **构建和产物**
 
 - [ ] 如果 A2UI 输入有变化，运行 `pnpm canvas:a2ui:bundle` 并提交更新后的 [`src/canvas-host/a2ui/a2ui.bundle.js`](https://github.com/openclaw/openclaw/blob/main/src/canvas-host/a2ui/a2ui.bundle.js)。
 - [ ] `pnpm run build`（重新生成 `dist/`）。
@@ -41,12 +41,12 @@ x-i18n:
 - [ ] 确认 `dist/build-info.json` 存在并包含预期的 `commit` 哈希（CLI 横幅在 npm 安装时使用此信息）。
 - [ ] 可选：构建后运行 `npm pack --pack-destination /tmp`；检查 tarball 内容并保留以备 GitHub 发布使用（**不要**提交它）。
 
-3. **变更日志和文档**
+1. **变更日志和文档**
 
 - [ ] 更新 `CHANGELOG.md`，添加面向用户的亮点（如果文件不存在则创建）；按版本严格降序排列条目。
 - [ ] 确保 README 示例/标志与当前 CLI 行为匹配（特别是新命令或选项）。
 
-4. **验证**
+1. **验证**
 
 - [ ] `pnpm build`
 - [ ] `pnpm check`
@@ -61,7 +61,7 @@ x-i18n:
   - `pnpm test:install:e2e`（需要两个密钥；运行两个提供商）
 - [ ]（可选）如果你的更改影响发送/接收路径，抽查 Web Gateway 网关。
 
-5. **macOS 应用（Sparkle）**
+1. **macOS 应用（Sparkle）**
 
 - [ ] 构建并签名 macOS 应用，然后压缩以供分发。
 - [ ] 生成 Sparkle appcast（通过 [`scripts/make_appcast.sh`](https://github.com/openclaw/openclaw/blob/main/scripts/make_appcast.sh) 生成 HTML 注释）并更新 `appcast.xml`。
@@ -70,7 +70,7 @@ x-i18n:
   - `APP_BUILD` 必须是数字且单调递增（不带 `-beta`），以便 Sparkle 正确比较版本。
   - 如果进行公证，使用从 App Store Connect API 环境变量创建的 `openclaw-notary` 钥匙串配置文件（参见 [macOS 发布](/platforms/mac/release)）。
 
-6. **发布（npm）**
+1. **发布（npm）**
 
 - [ ] 确认 git 状态干净；根据需要提交并推送。
 - [ ] 如需要，`npm login`（验证 2FA）。
@@ -87,7 +87,7 @@ x-i18n:
 - **延迟修复后需要重新指向标签**：强制更新并推送标签，然后确保 GitHub 发布资产仍然匹配：
   - `git tag -f vX.Y.Z && git push -f origin vX.Y.Z`
 
-7. **GitHub 发布 + appcast**
+1. **GitHub 发布 + appcast**
 
 - [ ] 打标签并推送：`git tag vX.Y.Z && git push origin vX.Y.Z`（或 `git push --tags`）。
 - [ ] 为 `vX.Y.Z` 创建/刷新 GitHub 发布，**标题为 `openclaw X.Y.Z`**（不仅仅是标签）；正文应包含该版本的**完整**变更日志部分（亮点 + 更改 + 修复），内联显示（无裸链接），且**不得在正文中重复标题**。

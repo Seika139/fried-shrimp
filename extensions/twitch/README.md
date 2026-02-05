@@ -40,7 +40,7 @@ Minimal config (simplified single-account):
 **Access control options:**
 
 - `requireMention: false` - Disable the default mention requirement to respond to all messages
-- `allowFrom: ["your_user_id"]` - Restrict to your Twitch user ID only (find your ID at https://www.twitchangles.com/xqc or similar)
+- `allowFrom: ["your_user_id"]` - Restrict to your Twitch user ID only (find your ID at <https://www.twitchangles.com/xqc> or similar)
 - `allowedRoles: ["moderator", "vip", "subscriber"]` - Restrict to specific roles
 
 Multi-account config (advanced):
@@ -80,7 +80,7 @@ Multi-account config (advanced):
 
 ## Full documentation
 
-See https://docs.openclaw.ai/channels/twitch for:
+See <https://docs.openclaw.ai/channels/twitch> for:
 
 - Token refresh setup
 - Access control patterns

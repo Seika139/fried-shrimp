@@ -49,9 +49,11 @@ x-i18n:
 
 - 重新运行新手引导并为该智能体选择 **Anthropic**。
 - 或在 **Gateway 网关主机**上粘贴 setup-token：
+
   ```bash
   openclaw models auth setup-token --provider anthropic
   ```
+
 - 或将 `auth-profiles.json` 从主智能体目录复制到新智能体目录。
 
 验证：
@@ -127,13 +129,17 @@ Doctor/service 将显示运行时状态（PID/最后退出）和日志提示。
 **启用更多日志：**
 
 - 提高文件日志详细程度（持久化 JSONL）：
+
   ```json
   { "logging": { "level": "debug" } }
   ```
+
 - 提高控制台详细程度（仅 TTY 输出）：
+
   ```json
   { "logging": { "consoleLevel": "debug", "consoleStyle": "pretty" } }
   ```
+
 - 快速提示：`--verbose` 仅影响**控制台**输出。文件日志仍由 `logging.level` 控制。
 
 参见 [/logging](/logging) 了解格式、配置和访问的完整概述。
@@ -146,10 +152,13 @@ Gateway 网关拒绝启动。
 **修复（推荐）：**
 
 - 运行向导并将 Gateway 网关运行模式设置为 **Local**：
+
   ```bash
   openclaw configure
   ```
+
 - 或直接设置：
+
   ```bash
   openclaw config set gateway.mode local
   ```
@@ -157,6 +166,7 @@ Gateway 网关拒绝启动。
 **如果你打算运行远程 Gateway 网关：**
 
 - 设置远程 URL 并保持 `gateway.mode=remote`：
+
   ```bash
   openclaw config set gateway.mode remote
   openclaw config set gateway.remote.url "wss://gateway.example.com"
@@ -558,6 +568,7 @@ curl -fsSL https://openclaw.ai/install.sh | bash
 
 - git 流程仅在仓库干净时才 rebase。先提交或 stash 更改。
 - 切换后，运行：
+
   ```bash
   openclaw doctor
   openclaw gateway restart

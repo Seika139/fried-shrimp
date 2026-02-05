@@ -42,7 +42,7 @@ curl -X POST http://127.0.0.1:8000/locations/resolve \
   -d '{"location_text": "Soho, London", "limit": 5}'
 ```
 
-3. **Search places:**
+1. **Search places:**
 
 ```bash
 curl -X POST http://127.0.0.1:8000/places/search \
@@ -55,7 +55,7 @@ curl -X POST http://127.0.0.1:8000/places/search \
   }'
 ```
 
-4. **Get details:**
+1. **Get details:**
 
 ```bash
 curl http://127.0.0.1:8000/places/{place_id}

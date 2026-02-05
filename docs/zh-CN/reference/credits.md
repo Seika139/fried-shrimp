@@ -24,8 +24,8 @@ OpenClaw = CLAW + TARDIS，因为每只太空龙虾都需要一台时空机器�
 
 ## 核心贡献者
 
-- **Maxim Vovshin** (@Hyaxia, 36747317+Hyaxia@users.noreply.github.com) - Blogwatcher skill
-- **Nacho Iacovino** (@nachoiacovino, nacho.iacovino@gmail.com) - 位置解析（Telegram 和 WhatsApp）
+- **Maxim Vovshin** (@Hyaxia, <36747317+Hyaxia@users.noreply.github.com>) - Blogwatcher skill
+- **Nacho Iacovino** (@nachoiacovino, <nacho.iacovino@gmail.com>) - 位置解析（Telegram 和 WhatsApp）
 
 ## 许可证
 

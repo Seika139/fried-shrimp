@@ -91,6 +91,7 @@ The hook does not automatically rotate logs. To manage log size, you can:
 
 2. **Use logrotate** (Linux):
    Create `/etc/logrotate.d/openclaw`:
+
    ```
    /home/username/.openclaw/logs/commands.log {
        weekly

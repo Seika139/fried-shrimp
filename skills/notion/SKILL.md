@@ -15,7 +15,7 @@ Use the Notion API to create/read/update pages, data sources (databases), and bl
 
 ## Setup
 
-1. Create an integration at https://notion.so/my-integrations
+1. Create an integration at <https://notion.so/my-integrations>
 2. Copy the API key (starts with `ntn_` or `secret_`)
 3. Store it:
 
@@ -24,7 +24,7 @@ mkdir -p ~/.config/notion
 echo "ntn_your_key_here" > ~/.config/notion/api_key
 ```
 
-4. Share target pages/databases with your integration (click "..." → "Connect to" → your integration name)
+1. Share target pages/databases with your integration (click "..." → "Connect to" → your integration name)
 
 ## API Basics
 
