@@ -10,5 +10,10 @@
 - [x] 動作確認
   - [x] `terraform init` の実行
   - [x] `dotenvx run -- terraform plan` の確認
+- [x] 安全なコミットと共有
+  - [x] `.gitignore` の調整（暗号化済み `.env` の許可）
+  - [x] 全ての変更をコミット
+- [x] 長期的な運用と履歴管理
+  - [x] 独自の `docs/agy/CHANGELOG.md` を作成（コンフリクト回避）
 - [x] 完了報告
   - [x] `walkthrough.md` の更新
