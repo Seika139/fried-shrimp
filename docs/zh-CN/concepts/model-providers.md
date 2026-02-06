@@ -140,14 +140,14 @@ Moonshot 使用 OpenAI 兼容端点，因此将其配置为自定义提供商：
 
 Kimi K2 模型 ID：
 
-{/_moonshot-kimi-k2-model-refs:start_/ && null}
+{/_ moonshot-kimi-k2-model-refs:start _/ && null}
 
 - `moonshot/kimi-k2.5`
 - `moonshot/kimi-k2-0905-preview`
 - `moonshot/kimi-k2-turbo-preview`
 - `moonshot/kimi-k2-thinking`
 - `moonshot/kimi-k2-thinking-turbo`
-  {/_moonshot-kimi-k2-model-refs:end_/ && null}
+  {/_ moonshot-kimi-k2-model-refs:end _/ && null}
 
 ```json5
 {
@@ -246,7 +246,7 @@ Ollama 是提供 OpenAI 兼容 API 的本地 LLM 运行时：
 - 提供商：`ollama`
 - 认证：无需（本地服务器）
 - 示例模型：`ollama/llama3.3`
-- 安装：<https://ollama.ai>
+- 安装：https://ollama.ai
 
 ```bash
 # Install Ollama, then pull a model:

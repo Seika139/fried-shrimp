@@ -41,7 +41,7 @@ echo "$PATH"
 npm prefix -g
 ```
 
-1. 将全局 npm bin 目录添加到你的 shell 启动文件中：
+2. 将全局 npm bin 目录添加到你的 shell 启动文件中：
 
 - zsh：`~/.zshrc`
 - bash：`~/.bashrc`

@@ -172,14 +172,14 @@ export OPENCLAW_HOME_VOLUME="openclaw_home"
 ./docker-setup.sh
 ```
 
-1. **将系统依赖烘焙到镜像中**（可重复 + 持久化）：
+2. **将系统依赖烘焙到镜像中**（可重复 + 持久化）：
 
 ```bash
 export OPENCLAW_DOCKER_APT_PACKAGES="git curl jq"
 ./docker-setup.sh
 ```
 
-1. **不使用 `npx` 安装 Playwright 浏览器**（避免 npm 覆盖冲突）：
+3. **不使用 `npx` 安装 Playwright 浏览器**（避免 npm 覆盖冲突）：
 
 ```bash
 docker compose run --rm openclaw-cli \
@@ -188,7 +188,7 @@ docker compose run --rm openclaw-cli \
 
 如果你需要 Playwright 安装系统依赖，使用 `OPENCLAW_DOCKER_APT_PACKAGES` 重建镜像，而不是在运行时使用 `--with-deps`。
 
-1. **持久化 Playwright 浏览器下载**：
+4. **持久化 Playwright 浏览器下载**：
 
 - 在 `docker-compose.yml` 中设置 `PLAYWRIGHT_BROWSERS_PATH=/home/node/.cache/ms-playwright`。
 - 确保 `/home/node` 通过 `OPENCLAW_HOME_VOLUME` 持久化，或通过 `OPENCLAW_EXTRA_MOUNTS` 挂载 `/home/node/.cache/ms-playwright`。

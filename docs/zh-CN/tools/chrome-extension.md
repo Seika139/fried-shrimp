@@ -38,18 +38,18 @@ OpenClaw Chrome 扩展让智能体控制你**现有的 Chrome 标签页**（你�
 openclaw browser extension install
 ```
 
-1. 打印已安装扩展的目录路径：
+2. 打印已安装扩展的目录路径：
 
 ```bash
 openclaw browser extension path
 ```
 
-1. Chrome → `chrome://extensions`
+3. Chrome → `chrome://extensions`
 
 - 启用"开发者模式"
 - "加载已解压的扩展程序" → 选择上面打印的目录
 
-1. 固定扩展。
+4. 固定扩展。
 
 ## 更新（无构建步骤）
 

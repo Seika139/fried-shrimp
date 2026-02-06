@@ -345,5 +345,5 @@ OpenProse 与 Lobster 配合良好：使用 `/prose` 编排多智能体准备，
 
 一个公开示例：一个"第二大脑" CLI + Lobster 管道，管理三个 Markdown 库（个人、伴侣、共享）。CLI 为统计、收件箱列表和过时扫描输出 JSON；Lobster 将这些命令链接成 `weekly-review`、`inbox-triage`、`memory-consolidation` 和 `shared-task-sync` 等工作流，每个都有审批关卡。AI 在可用时处理判断（分类），不可用时回退到确定性规则。
 
-- 帖子：<https://x.com/plattenschieber/status/2014508656335770033>
-- 仓库：<https://github.com/bloomedai/brain-cli>
+- 帖子：https://x.com/plattenschieber/status/2014508656335770033
+- 仓库：https://github.com/bloomedai/brain-cli

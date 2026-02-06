@@ -82,13 +82,13 @@ pnpm link --global
 openclaw channels login
 ```
 
-1. 启动 Gateway 网关（保持运行）：
+2. 启动 Gateway 网关（保持运行）：
 
 ```bash
 openclaw gateway --port 18789
 ```
 
-1. 在 `~/.openclaw/openclaw.json` 中放置最小配置：
+3. 在 `~/.openclaw/openclaw.json` 中放置最小配置：
 
 ```json5
 {

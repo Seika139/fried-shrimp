@@ -76,7 +76,7 @@ OpenClaw 提供两个轻量级 Web 工具：
 
 ## 获取 Brave API 密钥
 
-1. 在 <https://brave.com/search/api/> 创建 Brave Search API 账户
+1. 在 https://brave.com/search/api/ 创建 Brave Search API 账户
 2. 在控制面板中，选择 **Data for Search** 计划（不是"Data for AI"）并生成 API 密钥。
 3. 运行 `openclaw configure --section web` 将密钥存储在配置中（推荐），或在环境中设置 `BRAVE_API_KEY`。
 
@@ -94,7 +94,7 @@ Perplexity Sonar 模型具有内置的网络搜索功能，并返回带有引用
 
 ### 获取 OpenRouter API 密钥
 
-1. 在 <https://openrouter.ai/> 创建账户
+1. 在 https://openrouter.ai/ 创建账户
 2. 添加额度（支持加密货币、预付费或信用卡）
 3. 在账户设置中生成 API 密钥
 

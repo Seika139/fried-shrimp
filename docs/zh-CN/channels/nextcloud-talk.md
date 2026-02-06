@@ -41,11 +41,9 @@ OpenClaw 将自动提供本地安装路径。
 
 1. 安装 Nextcloud Talk 插件。
 2. 在你的 Nextcloud 服务器上创建机器人：
-
    ```bash
    ./occ talk:bot:install "OpenClaw" "<shared-secret>" "<webhook-url>" --feature reaction
    ```
-
 3. 在目标房间设置中启用机器人。
 4. 配置 OpenClaw：
    - 配置项：`channels.nextcloud-talk.baseUrl` + `channels.nextcloud-talk.botSecret`

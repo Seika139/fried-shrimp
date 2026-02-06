@@ -175,8 +175,8 @@ agents: {
 - 对于大型回填，OpenAI 通常是我们支持的最快选项，因为我们可以在单个批处理作业中提交许多嵌入请求，让 OpenAI 异步处理它们。
 - OpenAI 为 Batch API 工作负载提供折扣定价，因此大型索引运行通常比同步发送相同请求更便宜。
 - 详情参见 OpenAI Batch API 文档和定价：
-  - <https://platform.openai.com/docs/api-reference/batch>
-  - <https://platform.openai.com/pricing>
+  - https://platform.openai.com/docs/api-reference/batch
+  - https://platform.openai.com/pricing
 
 配置示例：
 
@@ -254,11 +254,11 @@ BM25（全文）正好相反：擅长精确令牌，弱于释义。
 - **向量**：按余弦相似度取前 `maxResults * candidateMultiplier` 个。
 - **BM25**：按 FTS5 BM25 排名取前 `maxResults * candidateMultiplier` 个（越低越好）。
 
-1. 将 BM25 排名转换为 0..1 范围的分数：
+2. 将 BM25 排名转换为 0..1 范围的分数：
 
 - `textScore = 1 / (1 + max(0, bm25Rank))`
 
-1. 按块 id 合并候选并计算加权分数：
+3. 按块 id 合并候选并计算加权分数：
 
 - `finalScore = vectorWeight * vectorScore + textWeight * textScore`
 

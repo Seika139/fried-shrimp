@@ -61,7 +61,7 @@ openclaw setup
 openclaw channels login
 ```
 
-1. 完整性检查：
+5. 完整性检查：
 
 ```bash
 openclaw health

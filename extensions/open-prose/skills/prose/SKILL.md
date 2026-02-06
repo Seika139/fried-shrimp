@@ -52,7 +52,6 @@ There is only ONE skill: `open-prose`. There are NO separate skills like `prose-
 3. Run with: `prose run examples/28-gas-town.prose`
 
 **Common examples by keyword:**
-
 | Keyword | File |
 |---------|------|
 | hello, hello world | `examples/01-hello-world.prose` |
@@ -276,19 +275,15 @@ When a user invokes `prose update`, check for legacy file structures and migrate
 1. **Check for `.prose/state.json`**
    - If exists, read the JSON content
    - Convert to `.env` format:
-
      ```json
      { "OPENPROSE_TELEMETRY": "enabled", "USER_ID": "user-xxx", "SESSION_ID": "sess-xxx" }
      ```
-
      becomes:
-
      ```env
      OPENPROSE_TELEMETRY=enabled
      USER_ID=user-xxx
      SESSION_ID=sess-xxx
      ```
-
    - Write to `.prose/.env`
    - Delete `.prose/state.json`
 

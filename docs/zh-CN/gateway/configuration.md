@@ -1307,7 +1307,6 @@ OpenClaw 在提供商启用且两个 token 都已设置时启动 Slack（通过�
 - `channels.slack.thread.inheritParent` 控制新线程会话是否继承父频道的记录（默认：false）。
 
 Slack 动作组（控制 `slack` 工具动作）：
-
 | 动作组 | 默认 | 说明 |
 | --- | --- | --- |
 | reactions | 已启用 | 反应 + 列出反应 |
@@ -1927,13 +1926,11 @@ MiniMax 认证：设置 `MINIMAX_API_KEY`（环境变量）或配置 `models.pro
 - `agents.defaults.blockStreamingBreak`：`"text_end"` 或 `"message_end"`（默认：text_end）。
 - `agents.defaults.blockStreamingChunk`：流式块的软分块。默认 800–1200 字符，优先段落分隔（`\n\n`），然后换行，然后句子。
   示例：
-
   ```json5
   {
     agents: { defaults: { blockStreamingChunk: { minChars: 800, maxChars: 1200 } } },
   }
   ```
-
 - `agents.defaults.blockStreamingCoalesce`：发送前合并流式块。
   默认为 `{ idleMs: 1000 }`，从 `blockStreamingChunk` 继承 `minChars`，
   `maxChars` 上限为渠道文本限制。Signal/Slack/Discord/Google Chat 默认
@@ -1947,13 +1944,11 @@ MiniMax 认证：设置 `MINIMAX_API_KEY`（环境变量）或配置 `models.pro
   模式：`off`（默认）、`natural`（800–2500ms）、`custom`（使用 `minMs`/`maxMs`）。
   每智能体覆盖：`agents.list[].humanDelay`。
   示例：
-
   ```json5
   {
     agents: { defaults: { humanDelay: { mode: "natural" } } },
   }
   ```
-
   参见 [/concepts/streaming](/concepts/streaming) 了解行为 + 分块细节。
 
 输入指示器：
@@ -2017,7 +2012,7 @@ Z.AI 模型可通过 `zai/<model>` 使用（例如 `zai/glm-4.7`），需要环�
 - `tools.web.fetch.readability`（默认 true；禁用后仅使用基本 HTML 清理）
 - `tools.web.fetch.firecrawl.enabled`（默认：设置了 API 密钥时为 true）
 - `tools.web.fetch.firecrawl.apiKey`（可选；默认为 `FIRECRAWL_API_KEY`）
-- `tools.web.fetch.firecrawl.baseUrl`（默认 <https://api.firecrawl.dev）>
+- `tools.web.fetch.firecrawl.baseUrl`（默认 https://api.firecrawl.dev）
 - `tools.web.fetch.firecrawl.onlyMainContent`（默认 true）
 - `tools.web.fetch.firecrawl.maxAgeMs`（可选）
 - `tools.web.fetch.firecrawl.timeoutSeconds`（可选）
@@ -2422,7 +2417,7 @@ OpenClaw 使用 **pi-coding-agent** 模型目录。你可以通过编写
 ### OpenCode Zen（多模型代理）
 
 OpenCode Zen 是一个具有每模型端点的多模型网关。OpenClaw 使用
-pi-ai 内置的 `opencode` 提供商；从 <https://opencode.ai/auth> 设置 `OPENCODE_API_KEY`（或
+pi-ai 内置的 `opencode` 提供商；从 https://opencode.ai/auth 设置 `OPENCODE_API_KEY`（或
 `OPENCODE_ZEN_API_KEY`）。
 
 说明：
@@ -3334,4 +3329,4 @@ Cron 是 Gateway 网关自有的唤醒和定时任务调度器。参见 [Cron �
 
 ---
 
-*下一步：[智能体运行时](/concepts/agent)* 🦞
+_下一步：[智能体运行时](/concepts/agent)_ 🦞

@@ -64,7 +64,7 @@ Zalo 是一款专注于越南市场的即时通讯应用；其 Bot API 让 Gatew
 
 ### 1）创建 bot token（Zalo Bot 平台）
 
-1. 前往 **<https://bot.zaloplatforms.com>** 并登录。
+1. 前往 **https://bot.zaloplatforms.com** 并登录。
 2. 创建新 bot 并配置其设置。
 3. 复制 bot token（格式：`12345689:abc-xyz`）。
 
@@ -88,8 +88,8 @@ Zalo 是一款专注于越南市场的即时通讯应用；其 Bot API 让 Gatew
 
 多账户支持：使用 `channels.zalo.accounts` 配置每账户 token 和可选的 `name`。
 
-1. 重启 Gateway 网关。当 token 被解析（环境变量或配置）时，Zalo 启动。
-2. 私信访问默认为配对模式。当 bot 首次被联系时批准配对码。
+3. 重启 Gateway 网关。当 token 被解析（环境变量或配置）时，Zalo 启动。
+4. 私信访问默认为配对模式。当 bot 首次被联系时批准配对码。
 
 ## 工作原理（行为）
 

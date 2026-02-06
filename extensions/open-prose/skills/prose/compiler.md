@@ -212,7 +212,6 @@ Comments are **stripped during compilation**. The OpenProse VM never sees them. 
   The `#` inside the string literal is part of the prompt, not a comment.
 
 - **Comments inside indented blocks are allowed**:
-
   ```prose
   agent researcher:
       # This comment is inside the block

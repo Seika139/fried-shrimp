@@ -243,7 +243,7 @@ openclaw browser extension install
 - "加载已解压的扩展程序" → 选择 `openclaw browser extension path` 打印的目录
 - 固定扩展，然后在你想要控制的标签页上点击它（徽章显示 `ON`）。
 
-1. 使用它：
+2. 使用它：
 
 - CLI：`openclaw browser --browser-profile chrome tabs`
 - 智能体工具：`browser` 配合 `profile="chrome"`

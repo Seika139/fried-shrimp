@@ -74,7 +74,7 @@ sudo apt --fix-broken install -y  # if there are dependency errors
 }
 ```
 
-1. 手动启动 Chromium：
+2. 手动启动 Chromium：
 
 ```bash
 chromium-browser --headless --no-sandbox --disable-gpu \
@@ -83,7 +83,7 @@ chromium-browser --headless --no-sandbox --disable-gpu \
   about:blank &
 ```
 
-1. 可选创建 systemd 用户服务以自动启动 Chrome：
+3. 可选创建 systemd 用户服务以自动启动 Chrome：
 
 ```ini
 # ~/.config/systemd/user/openclaw-browser.service

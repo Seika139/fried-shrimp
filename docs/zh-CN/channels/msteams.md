@@ -173,7 +173,7 @@ OpenClaw 将自动提供本地安装路径。
 
 > **弃用通知：** 2025-07-31 之后已弃用创建新的多租户机器人。新机器人请使用 **Single Tenant**。
 
-1. 点击 **Review + create** → **Create**（等待约 1-2 分钟）
+3. 点击 **Review + create** → **Create**（等待约 1-2 分钟）
 
 ### 步骤 2：获取凭证
 
@@ -565,7 +565,6 @@ Authorization 头仅附加到 `channels.msteams.mediaAuthAllowHosts` 中的主�
    ```
 
 4. **配置 OpenClaw：**
-
    ```json5
    {
      channels: {
@@ -755,7 +754,7 @@ https://teams.microsoft.com/l/channel/19%3A15bc...%40thread.tacv2/ChannelName?gr
 
 - **"Icon file cannot be empty"：** 清单引用的图标文件为 0 字节。创建有效的 PNG 图标（`outline.png` 为 32x32，`color.png` 为 192x192）。
 - **"webApplicationInfo.Id already in use"：** 应用仍安装在另一个团队/聊天中。先找到并卸载它，或等待 5-10 分钟让其传播。
-- **上传时"Something went wrong"：** 改为通过 <https://admin.teams.microsoft.com> 上传，打开浏览器 DevTools（F12）→ Network 选项卡，检查响应正文中的实际错误。
+- **上传时"Something went wrong"：** 改为通过 https://admin.teams.microsoft.com 上传，打开浏览器 DevTools（F12）→ Network 选项卡，检查响应正文中的实际错误。
 - **侧载失败：** 尝试"Upload an app to your org's app catalog"而不是"Upload a custom app" - 这通常可以绕过侧载限制。
 
 ### RSC 权限不工作

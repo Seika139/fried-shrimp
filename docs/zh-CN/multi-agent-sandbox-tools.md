@@ -368,7 +368,6 @@ agents.list[].sandbox.prune.* > agents.defaults.sandbox.prune.*
    - 验证智能体无法使用被拒绝的工具
 
 4. **监控日志：**
-
    ```exec
    tail -f "${OPENCLAW_STATE_DIR:-$HOME/.openclaw}/logs/gateway.log" | grep -E "routing|sandbox|tools"
    ```

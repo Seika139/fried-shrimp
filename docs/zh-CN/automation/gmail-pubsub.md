@@ -137,19 +137,19 @@ gcloud config set project <project-id>
 
 注意：Gmail watch 要求 Pub/Sub 主题与 OAuth 客户端位于同一项目中。
 
-1. 启用 API：
+2. 启用 API：
 
 ```bash
 gcloud services enable gmail.googleapis.com pubsub.googleapis.com
 ```
 
-1. 创建主题：
+3. 创建主题：
 
 ```bash
 gcloud pubsub topics create gog-gmail-watch
 ```
 
-1. 允许 Gmail push 发布：
+4. 允许 Gmail push 发布：
 
 ```bash
 gcloud pubsub topics add-iam-policy-binding gog-gmail-watch \

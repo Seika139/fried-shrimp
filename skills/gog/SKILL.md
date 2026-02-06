@@ -100,7 +100,6 @@ Email Formatting
   ```
 
 - Example (HTML list):
-
   ```bash
   gog gmail send --to recipient@example.com \
     --subject "Meeting Follow-up" \

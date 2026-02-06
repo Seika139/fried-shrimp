@@ -4,8 +4,8 @@ Welcome to the lobster tank! 🦞
 
 ## Quick Links
 
-- **GitHub:** <https://github.com/openclaw/openclaw>
-- **Discord:** <https://discord.gg/qkhbAGHRBT>
+- **GitHub:** https://github.com/openclaw/openclaw
+- **Discord:** https://discord.gg/qkhbAGHRBT
 - **X/Twitter:** [@steipete](https://x.com/steipete) / [@openclaw](https://x.com/openclaw)
 
 ## Maintainers

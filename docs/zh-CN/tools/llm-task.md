@@ -33,7 +33,7 @@ x-i18n:
 }
 ```
 
-1. 将工具加入允许列表（它以 `optional: true` 注册）：
+2. 将工具加入允许列表（它以 `optional: true` 注册）：
 
 ```json
 {
