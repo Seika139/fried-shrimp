@@ -69,7 +69,7 @@ resource "github_repository_ruleset" "main" {
     required_status_checks {
       strict_required_status_checks_policy = true
       required_check {
-        context        = "markdownlint"
+        context        = "call-common-markdownlint / markdownlint"
         integration_id = 15368
       }
     }
