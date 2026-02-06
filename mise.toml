@@ -1,0 +1,20 @@
+[tasks.init]
+description = "miseの初期設定を行う"
+shell = "bash -c"
+quiet = true
+run = '''
+# タスクスクリプトに実行権限を付与する
+find ./mise -name "*.sh" -exec chmod +x {} \;
+'''
+
+[tasks.encrypt]
+description = "暗号化された .env.keys を生成する"
+shell = "bash -c"
+quiet = true
+run = "dotenvx encrypt"
+
+[tasks.decrypt]
+description = "暗号化された .env.keys を復号化する"
+shell = "bash -c"
+quiet = true
+run = "dotenvx decrypt"
