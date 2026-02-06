@@ -1,3 +1,13 @@
+[vars]
+text_red = '\033[0;31m'
+text_green = '\033[0;32m'
+text_yellow = '\033[0;33m'
+text_blue = '\033[0;34m'
+text_magenta = '\033[0;35m'
+text_cyan = '\033[0;36m'
+text_white = '\033[0;37m'
+text_reset = '\033[0m'
+
 [tasks.init]
 description = "miseの初期設定を行う"
 shell = "bash -c"
@@ -18,3 +28,42 @@ description = "暗号化された .env.keys を復号化する"
 shell = "bash -c"
 quiet = true
 run = "dotenvx decrypt"
+
+[tasks.check]
+description = "コードの静的解析とテストを実行します"
+shell = "bash -c"
+quiet = true
+run = '''
+if command -v markdownlint-cli2 >/dev/null 2>&1; then
+  printf "{{vars.text_yellow}}%s{{vars.text_reset}}\n" "Running markdownlint..."
+  if [ -e .markdownlint-cli2.jsonc ]; then
+    markdownlint-cli2 --config .markdownlint-cli2.jsonc
+  else
+    markdownlint-cli2 .
+  fi
+else
+  printf "{{vars.text_red}}%s{{vars.text_reset}}\n" "markdownlint-cli2 is not installed; skipping markdown linting."
+fi
+
+printf "{{vars.text_yellow}}%s{{vars.text_reset}}\n" "Running yamllint..."
+if command -v yamllint >/dev/null 2>&1; then
+  yamllint .
+else
+  printf "{{vars.text_red}}%s{{vars.text_reset}}\n" "yamllint is not installed; skipping yamllint."
+fi
+
+if command -v shellcheck >/dev/null 2>&1; then
+  printf "{{vars.text_yellow}}%s{{vars.text_reset}}\n" "Running shellcheck..."
+  shellcheck_files=()
+  while IFS= read -r -d '' file; do
+    shellcheck_files+=("$file")
+  done < <(find . -type f \( -name "*.sh" -o -name "*.bash" \) -not -path "./.venv/*" -not -path "./node_modules/*" -not -path "./.git/*" -print0)
+  if [ "${shellcheck_files[0]+_}" ]; then
+    shellcheck -x -P SCRIPTDIR "${shellcheck_files[@]}"
+  else
+    printf "{{vars.text_yellow}}%s{{vars.text_reset}}\n" "No shell scripts found; skipping shellcheck."
+  fi
+else
+  printf "{{vars.text_red}}%s{{vars.text_reset}}\n" "shellcheck is not installed; skipping shell script linting."
+fi
+'''
