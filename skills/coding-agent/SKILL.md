@@ -11,7 +11,7 @@ metadata:
 
 Use **bash** (with optional background mode) for all coding agent work. Simple and effective.
 
-## ⚠️ PTY Mode Required
+## ⚠️ PTY Mode Required!
 
 Coding agents (Codex, Claude Code, Pi) are **interactive terminal applications** that need a pseudo-terminal (PTY) to work correctly. Without PTY, you'll get broken output, missing colors, or the agent may hang.
 

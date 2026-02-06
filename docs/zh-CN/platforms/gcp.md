@@ -76,7 +76,7 @@ Ubuntu 也可以；请相应地映射软件包。
 
 **选项 A：gcloud CLI**（推荐用于自动化）
 
-从 <https://cloud.google.com/sdk/docs/install> 安装
+从 https://cloud.google.com/sdk/docs/install 安装
 
 初始化并认证：
 
@@ -87,7 +87,7 @@ gcloud auth login
 
 **选项 B：Cloud Console**
 
-所有步骤都可以通过 <https://console.cloud.google.com> 的 Web UI 完成
+所有步骤都可以通过 https://console.cloud.google.com 的 Web UI 完成
 
 ---
 
@@ -100,7 +100,7 @@ gcloud projects create my-openclaw-project --name="OpenClaw Gateway"
 gcloud config set project my-openclaw-project
 ```
 
-在 <https://console.cloud.google.com/billing> 启用计费（Compute Engine 必需）。
+在 https://console.cloud.google.com/billing 启用计费（Compute Engine 必需）。
 
 启用 Compute Engine API：
 
@@ -491,7 +491,6 @@ gcloud compute instances start openclaw-gateway --zone=us-central1-a
    ```
 
 2. 授予 Compute Instance Admin 角色（或更窄的自定义角色）：
-
    ```bash
    gcloud projects add-iam-policy-binding my-openclaw-project \
      --member="serviceAccount:openclaw-deploy@my-openclaw-project.iam.gserviceaccount.com" \
@@ -500,7 +499,7 @@ gcloud compute instances start openclaw-gateway --zone=us-central1-a
 
 避免为自动化使用 Owner 角色。使用最小权限原则。
 
-参阅 <https://cloud.google.com/iam/docs/understanding-roles> 了解 IAM 角色详情。
+参阅 https://cloud.google.com/iam/docs/understanding-roles 了解 IAM 角色详情。
 
 ---
 

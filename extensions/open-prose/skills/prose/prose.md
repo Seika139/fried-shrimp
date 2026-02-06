@@ -347,7 +347,7 @@ outputBinding := "output" NAME "=" expression
 
 # Definitions
 
-agentDef := "agent" NAME ":" INDENT property*DEDENT
+agentDef := "agent" NAME ":" INDENT property* DEDENT
 blockDef := "block" NAME params? ":" INDENT statement* DEDENT
 params := "(" NAME ("," NAME)\* ")"
 
@@ -356,7 +356,7 @@ params := "(" NAME ("," NAME)\* ")"
 property := "model:" ("sonnet" | "opus" | "haiku")
 | "prompt:" STRING
 | "persist:" ("true" | "project" | "user" | STRING)
-| "context:" (NAME | "[" NAME*"]" | "{" NAME* "}")
+| "context:" (NAME | "[" NAME* "]" | "{" NAME* "}")
 | "retry:" NUMBER
 | "backoff:" ("none" | "linear" | "exponential")
 | "skills:" "[" STRING* "]"
@@ -376,35 +376,35 @@ assignment := NAME "=" expression
 
 # Control Flow
 
-parallelBlock := "parallel" modifiers? ":" INDENT branch*DEDENT
+parallelBlock := "parallel" modifiers? ":" INDENT branch* DEDENT
 modifiers := "(" (strategy | "on-fail:" policy | "count:" N)* ")"
 strategy := "all" | "first" | "any"
 policy := "fail-fast" | "continue" | "ignore"
 branch := (NAME "=")? statement
 
-repeatBlock := "repeat" N ("as" NAME)? ":" INDENT statement*DEDENT
+repeatBlock := "repeat" N ("as" NAME)? ":" INDENT statement* DEDENT
 forEachBlock:= "parallel"? "for" NAME ("," NAME)? "in" collection ":" INDENT statement* DEDENT
 loopBlock := "loop" condition? ("(" "max:" N ")")? ("as" NAME)? ":" INDENT statement\* DEDENT
 condition := ("until" | "while") discretion
 
 # Error Handling
 
-tryBlock := "try:" INDENT statement*DEDENT catch? finally?
+tryBlock := "try:" INDENT statement* DEDENT catch? finally?
 catch := "catch" ("as" NAME)? ":" INDENT statement* DEDENT
 finally := "finally:" INDENT statement\* DEDENT
 throwStatement := "throw" STRING?
 
 # Conditionals
 
-choiceBlock := "choice" discretion ":" INDENT option*DEDENT
+choiceBlock := "choice" discretion ":" INDENT option* DEDENT
 option := "option" STRING ":" INDENT statement* DEDENT
-ifStatement := "if" discretion ":" INDENT statement*DEDENT elif* else?
-elif := "elif" discretion ":" INDENT statement*DEDENT
+ifStatement := "if" discretion ":" INDENT statement* DEDENT elif* else?
+elif := "elif" discretion ":" INDENT statement* DEDENT
 else := "else:" INDENT statement* DEDENT
 
 # Composition
 
-doBlock := "do" (":" INDENT statement*DEDENT | NAME args?)
+doBlock := "do" (":" INDENT statement* DEDENT | NAME args?)
 args := "(" expression* ")"
 arrowExpr := session "->" session ("->" session)_
 programCall := NAME "(" (NAME ":" expression)_ ")"
@@ -412,7 +412,7 @@ programCall := NAME "(" (NAME ":" expression)_ ")"
 # Pipelines
 
 pipeExpr := collection ("|" pipeOp)+
-pipeOp := ("map" | "filter" | "pmap") ":" INDENT statement*DEDENT
+pipeOp := ("map" | "filter" | "pmap") ":" INDENT statement* DEDENT
 | "reduce" "(" NAME "," NAME ")" ":" INDENT statement* DEDENT
 
 # Primitives

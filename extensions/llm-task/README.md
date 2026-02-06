@@ -20,7 +20,7 @@ Designed to be called from workflow engines (for example, Lobster via
 }
 ```
 
-1. Allowlist the tool (it is registered with `optional: true`):
+2. Allowlist the tool (it is registered with `optional: true`):
 
 ```json
 {

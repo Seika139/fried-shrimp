@@ -15,10 +15,9 @@ Manage Trello boards, lists, and cards directly from OpenClaw.
 
 ## Setup
 
-1. Get your API key: <https://trello.com/app-key>
+1. Get your API key: https://trello.com/app-key
 2. Generate a token (click "Token" link on that page)
 3. Set environment variables:
-
    ```bash
    export TRELLO_API_KEY="your-api-key"
    export TRELLO_TOKEN="your-token"

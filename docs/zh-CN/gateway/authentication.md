@@ -31,7 +31,7 @@ export ANTHROPIC_API_KEY="..."
 openclaw models status
 ```
 
-1. 如果 Gateway 网关在 systemd/launchd 下运行，最好将密钥放在 `~/.openclaw/.env` 中以便守护进程可以读取：
+3. 如果 Gateway 网关在 systemd/launchd 下运行，最好将密钥放在 `~/.openclaw/.env` 中以便守护进程可以读取：
 
 ```bash
 cat >> ~/.openclaw/.env <<'EOF'

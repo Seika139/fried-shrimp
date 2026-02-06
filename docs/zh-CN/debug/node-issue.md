@@ -69,21 +69,19 @@ node --import tsx scripts/repro/tsx-name-repro.ts
 
 - 开发脚本使用 Bun（当前临时回退方案）。
 - 使用 Node + tsc watch，然后运行编译产物：
-
   ```bash
   pnpm exec tsc --watch --preserveWatchOutput
   node --watch openclaw.mjs status
   ```
-
 - 已在本地确认：`pnpm exec tsc -p tsconfig.json` + `node openclaw.mjs status` 在 Node 25 上可正常运行。
 - 如果可能，在 TS 加载器中禁用 esbuild 的 keepNames（防止插入 `__name` 辅助函数）；tsx 目前不提供此配置项。
 - 在 Node LTS（22/24）上测试 `tsx`，确认该问题是否为 Node 25 特有。
 
 ## 参考资料
 
-- <https://opennext.js.org/cloudflare/howtos/keep_names>
-- <https://esbuild.github.io/api/#keep-names>
-- <https://github.com/evanw/esbuild/issues/1031>
+- https://opennext.js.org/cloudflare/howtos/keep_names
+- https://esbuild.github.io/api/#keep-names
+- https://github.com/evanw/esbuild/issues/1031
 
 ## 后续步骤
 

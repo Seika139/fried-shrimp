@@ -212,13 +212,11 @@ WhatsApp 需要真实手机号码进行验证。VoIP 和虚拟号码通常会被
 
 - `Body` 是带有信封的当前消息正文。
 - 引用回复上下文**始终附加**：
-
   ```
   [Replying to +1555 id:ABC123]
   <quoted text or <media:...>>
   [/Replying]
   ```
-
 - 回复元数据也会设置：
   - `ReplyToId` = stanzaId
   - `ReplyToBody` = 引用正文或媒体占位符

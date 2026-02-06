@@ -40,16 +40,16 @@ x-i18n:
 openclaw gateway --port 18789
 ```
 
-1. 在 iOS 应用中，打开设置并选择一个已发现的 Gateway 网关（或启用手动主机并输入主机/端口）。
+2. 在 iOS 应用中，打开设置并选择一个已发现的 Gateway 网关（或启用手动主机并输入主机/端口）。
 
-2. 在 Gateway 网关主机上批准配对请求：
+3. 在 Gateway 网关主机上批准配对请求：
 
 ```bash
 openclaw nodes pending
 openclaw nodes approve <requestId>
 ```
 
-1. 验证连接：
+4. 验证连接：
 
 ```bash
 openclaw nodes status

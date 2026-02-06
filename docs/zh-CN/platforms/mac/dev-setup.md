@@ -20,8 +20,8 @@ x-i18n:
 
 在构建应用之前，确保你已安装以下内容：
 
-1. **Xcode 26.2+**：Swift 开发所需。
-2. **Node.js 22+ & pnpm**：Gateway 网关、CLI 和打包脚本所需。
+1.  **Xcode 26.2+**：Swift 开发所需。
+2.  **Node.js 22+ & pnpm**：Gateway 网关、CLI 和打包脚本所需。
 
 ## 1. 安装依赖
 
@@ -42,7 +42,7 @@ pnpm install
 如果你没有 Apple Developer ID 证书，脚本将自动使用 **ad-hoc 签名**（`-`）。
 
 有关开发运行模式、签名标志和 Team ID 故障排除，请参阅 macOS 应用 README：
-<https://github.com/openclaw/openclaw/blob/main/apps/macos/README.md>
+https://github.com/openclaw/openclaw/blob/main/apps/macos/README.md
 
 > **注意**：Ad-hoc 签名的应用可能会触发安全提示。如果应用立即崩溃并显示"Abort trap 6"，请参阅[故障排除](#troubleshooting)部分。
 
@@ -52,9 +52,9 @@ macOS 应用期望全局安装 `openclaw` CLI 来管理后台任务。
 
 **安装方法（推荐）：**
 
-1. 打开 OpenClaw 应用。
-2. 转到 **General** 设置标签页。
-3. 点击 **"Install CLI"**。
+1.  打开 OpenClaw 应用。
+2.  转到 **General** 设置标签页。
+3.  点击 **"Install CLI"**。
 
 或者，手动安装：
 
@@ -89,11 +89,9 @@ xcrun swift --version
 **修复：**
 
 1. 重置 TCC 权限：
-
    ```bash
    tccutil reset All bot.molt.mac.debug
    ```
-
 2. 如果这不起作用，在 [`scripts/package-mac-app.sh`](https://github.com/openclaw/openclaw/blob/main/scripts/package-mac-app.sh) 中临时更改 `BUNDLE_ID` 以强制 macOS 从"全新状态"开始。
 
 ### Gateway 网关无限期"Starting..."

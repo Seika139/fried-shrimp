@@ -29,13 +29,13 @@ x-i18n:
 openclaw plugins list
 ```
 
-1. 安装官方插件（例如：Voice Call）：
+2. 安装官方插件（例如：Voice Call）：
 
 ```bash
 openclaw plugins install @openclaw/voice-call
 ```
 
-1. 重启 Gateway 网关，然后在 `plugins.entries.<id>.config` 下配置。
+3. 重启 Gateway 网关，然后在 `plugins.entries.<id>.config` 下配置。
 
 参见 [Voice Call](/plugins/voice-call) 了解具体的插件示例。
 
@@ -96,17 +96,17 @@ OpenClaw 按顺序扫描：
 
 - `plugins.load.paths`（文件或目录）
 
-1. 工作区扩展
+2. 工作区扩展
 
 - `<workspace>/.openclaw/extensions/*.ts`
 - `<workspace>/.openclaw/extensions/*/index.ts`
 
-1. 全局扩展
+3. 全局扩展
 
 - `~/.openclaw/extensions/*.ts`
 - `~/.openclaw/extensions/*/index.ts`
 
-1. 捆绑扩展（随 OpenClaw 一起发布，**默认禁用**）
+4. 捆绑扩展（随 OpenClaw 一起发布，**默认禁用**）
 
 - `<openclaw>/extensions/*`
 
@@ -411,26 +411,26 @@ export default function (api) {
 - 所有渠道配置位于 `channels.<id>` 下。
 - 对于多账户设置，优先使用 `channels.<id>.accounts.<accountId>`。
 
-1. 定义渠道元数据
+2. 定义渠道元数据
 
 - `meta.label`、`meta.selectionLabel`、`meta.docsPath`、`meta.blurb` 控制 CLI/UI 列表。
 - `meta.docsPath` 应指向像 `/channels/<id>` 这样的文档页面。
 - `meta.preferOver` 让插件替换另一个渠道（自动启用优先选择它）。
 - `meta.detailLabel` 和 `meta.systemImage` 被 UI 用于详细文本/图标。
 
-1. 实现必需的适配器
+3. 实现必需的适配器
 
 - `config.listAccountIds` + `config.resolveAccount`
 - `capabilities`（聊天类型、媒体、线程等）
 - `outbound.deliveryMode` + `outbound.sendText`（用于基本发送）
 
-1. 根据需要添加可选适配器
+4. 根据需要添加可选适配器
 
 - `setup`（向导）、`security`（私信策略）、`status`（健康/诊断）
 - `gateway`（启动/停止/登录）、`mentions`、`threading`、`streaming`
 - `actions`（消息操作）、`commands`（原生命令行为）
 
-1. 在插件中注册渠道
+5. 在插件中注册渠道
 
 - `api.registerChannel({ plugin })`
 

@@ -210,7 +210,7 @@ OpenClaw 有两个独立的"谁可以触发我？"层：
 - **群组白名单**（特定于渠道）：机器人会接受来自哪些群组/渠道/公会的消息。
   - 常见模式：
     - `channels.whatsapp.groups`、`channels.telegram.groups`、`channels.imessage.groups`：单群组默认值如 `requireMention`；设置时，它也充当群组白名单（包含 `"*"` 以保持允许所有的行为）。
-    - `groupPolicy="allowlist"` + `groupAllowFrom`：限制谁可以在群组会话_内部_触发机器人（WhatsApp/Telegram/Signal/iMessage/Microsoft Teams）。
+    - `groupPolicy="allowlist"` + `groupAllowFrom`：限制谁可以在群组会话*内部*触发机器人（WhatsApp/Telegram/Signal/iMessage/Microsoft Teams）。
     - `channels.discord.guilds` / `channels.slack.channels`：单平台白名单 + 提及默认值。
   - **安全说明：** 将 `dmPolicy="open"` 和 `groupPolicy="open"` 视为最后手段的设置。应该很少使用；除非你完全信任房间的每个成员，否则优先使用配对 + 白名单。
 
@@ -728,21 +728,17 @@ CI 在 `secrets` 任务中运行 `detect-secrets scan --baseline .secrets.baseli
 ### 如果 CI 失败
 
 1. 在本地重现：
-
    ```bash
    detect-secrets scan --baseline .secrets.baseline
    ```
-
 2. 了解工具：
    - `detect-secrets scan` 查找候选项并将它们与基线进行比较。
    - `detect-secrets audit` 打开交互式审查，将每个基线项标记为真实或误报。
 3. 对于真实秘密：轮换/移除它们，然后重新运行扫描以更新基线。
 4. 对于误报：运行交互式审计并将它们标记为误报：
-
    ```bash
    detect-secrets audit .secrets.baseline
    ```
-
 5. 如果你需要新的排除项，将它们添加到 `.detect-secrets.cfg` 并使用匹配的 `--exclude-files` / `--exclude-lines` 标志重新生成基线（配置文件仅供参考；detect-secrets 不会自动读取它）。
 
 一旦基线反映了预期状态，提交更新后的 `.secrets.baseline`。
@@ -770,7 +766,7 @@ AI（Clawd）
 
 在 OpenClaw 中发现漏洞？请负责任地报告：
 
-1. 电子邮件：<security@openclaw.ai>
+1. 电子邮件：security@openclaw.ai
 2. 在修复之前不要公开发布
 3. 我们会感谢你（除非你希望匿名）
 

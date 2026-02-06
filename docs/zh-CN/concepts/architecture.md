@@ -104,11 +104,9 @@ Client                    Gateway
 
 - 推荐：Tailscale 或 VPN。
 - 替代方案：SSH 隧道
-
   ```bash
   ssh -N -L 18789:127.0.0.1:18789 user@host
   ```
-
 - 相同的握手 + 认证令牌适用于隧道连接。
 - 远程设置中可以为 WS 启用 TLS + 可选的证书固定。
 

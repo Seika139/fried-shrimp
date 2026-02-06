@@ -37,7 +37,7 @@ x-i18n:
 
 ### 设置
 
-1. 在 <https://api.slack.com/apps> 创建一个 Slack 应用（从头开始）。
+1. 在 https://api.slack.com/apps 创建一个 Slack 应用（从头开始）。
 2. **Socket Mode** → 开启。然后前往 **Basic Information** → **App-Level Tokens** → **Generate Token and Scopes**，添加 `connections:write` 权限范围。复制 **App Token**（`xapp-...`）。
 3. **OAuth & Permissions** → 添加 bot token 权限范围（使用下面的 manifest）。点击 **Install to Workspace**。复制 **Bot User OAuth Token**（`xoxb-...`）。
 4. 可选：**OAuth & Permissions** → 添加 **User Token Scopes**（参见下面的只读列表）。重新安装应用并复制 **User OAuth Token**（`xoxp-...`）。
@@ -255,30 +255,30 @@ HTTP 模式使用 Events API + Interactivity + Slash Commands，共享一个请�
 
 ## 权限范围（当前 vs 可选）
 
-Slack 的 Conversations API 是按类型区分的：你只需要你实际接触的会话类型（channels、groups、im、mpim）的权限范围。概述参见 <https://docs.slack.dev/apis/web-api/using-the-conversations-api/。>
+Slack 的 Conversations API 是按类型区分的：你只需要你实际接触的会话类型（channels、groups、im、mpim）的权限范围。概述参见 https://docs.slack.dev/apis/web-api/using-the-conversations-api/。
 
 ### Bot 令牌权限范围（必需）
 
 - `chat:write`（通过 `chat.postMessage` 发送/更新/删除消息）
-  <https://docs.slack.dev/reference/methods/chat.postMessage>
+  https://docs.slack.dev/reference/methods/chat.postMessage
 - `im:write`（通过 `conversations.open` 打开私信用于用户私信）
-  <https://docs.slack.dev/reference/methods/conversations.open>
+  https://docs.slack.dev/reference/methods/conversations.open
 - `channels:history`、`groups:history`、`im:history`、`mpim:history`
-  <https://docs.slack.dev/reference/methods/conversations.history>
+  https://docs.slack.dev/reference/methods/conversations.history
 - `channels:read`、`groups:read`、`im:read`、`mpim:read`
-  <https://docs.slack.dev/reference/methods/conversations.info>
+  https://docs.slack.dev/reference/methods/conversations.info
 - `users:read`（用户查询）
-  <https://docs.slack.dev/reference/methods/users.info>
+  https://docs.slack.dev/reference/methods/users.info
 - `reactions:read`、`reactions:write`（`reactions.get` / `reactions.add`）
-  <https://docs.slack.dev/reference/methods/reactions.get>
-  <https://docs.slack.dev/reference/methods/reactions.add>
+  https://docs.slack.dev/reference/methods/reactions.get
+  https://docs.slack.dev/reference/methods/reactions.add
 - `pins:read`、`pins:write`（`pins.list` / `pins.add` / `pins.remove`）
-  <https://docs.slack.dev/reference/scopes/pins.read>
-  <https://docs.slack.dev/reference/scopes/pins.write>
+  https://docs.slack.dev/reference/scopes/pins.read
+  https://docs.slack.dev/reference/scopes/pins.write
 - `emoji:read`（`emoji.list`）
-  <https://docs.slack.dev/reference/scopes/emoji.read>
+  https://docs.slack.dev/reference/scopes/emoji.read
 - `files:write`（通过 `files.uploadV2` 上传）
-  <https://docs.slack.dev/messaging/working-with-files/#upload>
+  https://docs.slack.dev/messaging/working-with-files/#upload
 
 ### 用户令牌权限范围（可选，默认只读）
 
@@ -297,9 +297,9 @@ Slack 的 Conversations API 是按类型区分的：你只需要你实际接触�
 - `mpim:write`（仅当我们添加群组私信打开/私信启动时通过 `conversations.open`）
 - `groups:write`（仅当我们添加私有频道管理时：创建/重命名/邀请/归档）
 - `chat:write.public`（仅当我们想发布到机器人未加入的频道时）
-  <https://docs.slack.dev/reference/scopes/chat.write.public>
+  https://docs.slack.dev/reference/scopes/chat.write.public
 - `users:read.email`（仅当我们需要从 `users.info` 获取邮箱字段时）
-  <https://docs.slack.dev/changelog/2017-04-narrowing-email-access>
+  https://docs.slack.dev/changelog/2017-04-narrowing-email-access
 - `files:read`（仅当我们开始列出/读取文件元数据时）
 
 ## 配置

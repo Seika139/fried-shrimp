@@ -23,13 +23,13 @@ x-i18n:
 openclaw gateway
 ```
 
-1. 打开 TUI。
+2. 打开 TUI。
 
 ```bash
 openclaw tui
 ```
 
-1. 输入消息并按 Enter。
+3. 输入消息并按 Enter。
 
 远程 Gateway 网关：
 

@@ -39,7 +39,6 @@ otherwise -> reply
 ![Group message flow](/images/groups-flow.svg)
 
 If you want...
-
 | Goal | What to set |
 |------|-------------|
 | Allow all groups but only reply on @mentions | `groups: { "*": { requireMention: true } }` |
@@ -301,7 +300,7 @@ Common intents (copy/paste):
 }
 ```
 
-1. Allow only specific groups (WhatsApp)
+2. Allow only specific groups (WhatsApp)
 
 ```json5
 {
@@ -316,7 +315,7 @@ Common intents (copy/paste):
 }
 ```
 
-1. Allow all groups but require mention (explicit)
+3. Allow all groups but require mention (explicit)
 
 ```json5
 {
@@ -328,7 +327,7 @@ Common intents (copy/paste):
 }
 ```
 
-1. Only the owner can trigger in groups (WhatsApp)
+4. Only the owner can trigger in groups (WhatsApp)
 
 ```json5
 {

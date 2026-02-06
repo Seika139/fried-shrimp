@@ -43,13 +43,13 @@ npx -y openclaw uninstall --all --yes --non-interactive
 openclaw gateway stop
 ```
 
-1. 卸载 Gateway 网关服务（launchd/systemd/schtasks）：
+2. 卸载 Gateway 网关服务（launchd/systemd/schtasks）：
 
 ```bash
 openclaw gateway uninstall
 ```
 
-1. 删除状态 + 配置：
+3. 删除状态 + 配置：
 
 ```bash
 rm -rf "${OPENCLAW_STATE_DIR:-$HOME/.openclaw}"
@@ -57,13 +57,13 @@ rm -rf "${OPENCLAW_STATE_DIR:-$HOME/.openclaw}"
 
 如果你将 `OPENCLAW_CONFIG_PATH` 设置为状态目录外的自定义位置，也请删除该文件。
 
-1. 删除你的工作区（可选，移除智能体文件）：
+4. 删除你的工作区（可选，移除智能体文件）：
 
 ```bash
 rm -rf ~/.openclaw/workspace
 ```
 
-1. 移除 CLI 安装（选择你使用的那个）：
+5. 移除 CLI 安装（选择你使用的那个）：
 
 ```bash
 npm rm -g openclaw
@@ -71,7 +71,7 @@ pnpm remove -g openclaw
 bun remove -g openclaw
 ```
 
-1. 如果你安装了 macOS 应用：
+6. 如果你安装了 macOS 应用：
 
 ```bash
 rm -rf /Applications/OpenClaw.app

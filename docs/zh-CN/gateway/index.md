@@ -56,11 +56,9 @@ pnpm gateway:watch
 ## 远程访问
 
 - 首选 Tailscale/VPN；否则使用 SSH 隧道：
-
   ```bash
   ssh -N -L 18789:127.0.0.1:18789 user@host
   ```
-
 - 然后客户端通过隧道连接到 `ws://127.0.0.1:18789`。
 - 如果配置了令牌，即使通过隧道，客户端也必须在 `connect.params.auth.token` 中包含它。
 

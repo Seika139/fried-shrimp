@@ -56,7 +56,7 @@ openclaw plugins install --link <path-to-openclaw>/extensions/nostr
 nak key generate
 ```
 
-1. 添加到配置：
+2. 添加到配置：
 
 ```json
 {
@@ -68,13 +68,13 @@ nak key generate
 }
 ```
 
-1. 导出密钥：
+3. 导出密钥：
 
 ```bash
 export NOSTR_PRIVATE_KEY="nsec1..."
 ```
 
-1. 重启 Gateway 网关。
+4. 重启 Gateway 网关。
 
 ## 配置参考
 

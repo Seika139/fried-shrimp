@@ -23,7 +23,7 @@ Windows 上的 OpenClaw 推荐**通过 WSL2**（推荐 Ubuntu）。CLI + Gateway
 
 - [入门指南](/start/getting-started)（在 WSL 内使用）
 - [安装和更新](/install/updating)
-- 官方 WSL2 指南（Microsoft）：<https://learn.microsoft.com/windows/wsl/install>
+- 官方 WSL2 指南（Microsoft）：https://learn.microsoft.com/windows/wsl/install
 
 ## Gateway 网关
 

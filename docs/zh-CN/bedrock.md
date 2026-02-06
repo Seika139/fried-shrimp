@@ -68,7 +68,7 @@ export AWS_PROFILE="your-profile"
 export AWS_BEARER_TOKEN_BEDROCK="..."
 ```
 
-1. 在配置中添加 Bedrock 提供商和模型（无需 `apiKey`）：
+2. 在配置中添加 Bedrock 提供商和模型（无需 `apiKey`）：
 
 ```json5
 {
