@@ -92,7 +92,7 @@ models.providers.<provider>.models[].cost
 有关 Anthropic API 定价，缓存读取比输入
 token 便宜得多，而缓存写入以更高的倍率计费。参见 Anthropic 的
 提示缓存定价了解最新费率和 TTL 倍率：
-https://docs.anthropic.com/docs/build-with-claude/prompt-caching
+<https://docs.anthropic.com/docs/build-with-claude/prompt-caching>
 
 ### 示例：用心跳保持 1 小时缓存热
 

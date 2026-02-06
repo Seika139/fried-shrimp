@@ -793,6 +793,7 @@ Gateway 网关启动
    ```
 
 3. 列出所有发现的 hooks：
+
    ```bash
    openclaw hooks list
    ```
@@ -824,6 +825,7 @@ openclaw hooks info my-hook
 2. 重启你的 Gateway 网关进程以重新加载 hooks。
 
 3. 检查 Gateway 网关日志中的错误：
+
    ```bash
    ./scripts/clawlog.sh | grep hook
    ```
@@ -898,6 +900,7 @@ node -e "import('./path/to/handler.ts').then(console.log)"
    ```
 
 4. 验证并重启你的 Gateway 网关进程：
+
    ```bash
    openclaw hooks list
    # Should show: 🎯 my-hook ✓

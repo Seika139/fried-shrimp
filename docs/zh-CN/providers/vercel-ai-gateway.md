@@ -29,7 +29,7 @@ x-i18n:
 openclaw onboard --auth-choice ai-gateway-api-key
 ```
 
-2. 设置默认模型：
+1. 设置默认模型：
 
 ```json5
 {

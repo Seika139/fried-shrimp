@@ -44,4 +44,4 @@ Restart the gateway after config changes.
 
 ## Docs
 
-https://docs.openclaw.ai/channels/feishu
+<https://docs.openclaw.ai/channels/feishu>

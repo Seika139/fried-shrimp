@@ -54,7 +54,7 @@ x-i18n:
 - 其他所有内容都在上下文之外，通过工具检索
 - 记忆写入是显式的工具调用（append/replace/insert），持久化后在下一轮重新注入
 
-2. **Hindsight 风格的记忆基底**
+1. **Hindsight 风格的记忆基底**
 
 - 分离观察到的、相信的和总结的内容
 - 支持 retain/recall/reflect

@@ -123,7 +123,7 @@ openclaw acp --session-label "support inbox"
 openclaw acp --reset-session
 ```
 
-2. ACP metadata per session
+1. ACP metadata per session
 
 ```json
 {

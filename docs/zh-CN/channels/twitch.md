@@ -41,7 +41,7 @@ openclaw plugins install ./extensions/twitch
    - 选择 **Bot Token**
    - 确认已选择 `chat:read` 和 `chat:write` 权限范围
    - 复制 **Client ID** 和 **Access Token**
-3. 查找你的 Twitch 用户 ID：https://www.streamweasels.com/tools/convert-twitch-username-to-user-id/
+3. 查找你的 Twitch 用户 ID：<https://www.streamweasels.com/tools/convert-twitch-username-to-user-id/>
 4. 配置令牌：
    - 环境变量：`OPENCLAW_TWITCH_ACCESS_TOKEN=...`（仅限默认账户）
    - 或配置：`channels.twitch.accessToken`
@@ -130,7 +130,7 @@ OPENCLAW_TWITCH_ACCESS_TOKEN=oauth:abc123...
 
 **为什么用用户 ID？** 用户名可以更改，允许冒充。用户 ID 是永久的。
 
-查找你的 Twitch 用户 ID：https://www.streamweasels.com/tools/convert-twitch-username-%20to-user-id/（将你的 Twitch 用户名转换为 ID）
+查找你的 Twitch 用户 ID：<https://www.streamweasels.com/tools/convert-twitch-username-%20to-user-id/（将你的> Twitch 用户名转换为 ID）
 
 ## 令牌刷新（可选）
 

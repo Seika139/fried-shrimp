@@ -19,14 +19,14 @@ x-i18n:
 Moonshot 提供兼容 OpenAI 端点的 Kimi API。配置提供商并将默认模型设置为 `moonshot/kimi-k2.5`，或使用 Kimi Coding 的 `kimi-coding/k2p5`。
 
 当前 Kimi K2 模型 ID：
-{/_ moonshot-kimi-k2-ids:start _/}
+{/_moonshot-kimi-k2-ids:start_/}
 
 - `kimi-k2.5`
 - `kimi-k2-0905-preview`
 - `kimi-k2-turbo-preview`
 - `kimi-k2-thinking`
 - `kimi-k2-thinking-turbo`
-  {/_ moonshot-kimi-k2-ids:end _/}
+  {/_moonshot-kimi-k2-ids:end_/}
 
 ```bash
 openclaw onboard --auth-choice moonshot-api-key

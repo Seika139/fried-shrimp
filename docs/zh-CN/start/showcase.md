@@ -240,15 +240,15 @@ Claude Code 发现并确认了净化器控制，然后 OpenClaw 接管来管理�
 
 <Card title="板式网球场地预订" icon="calendar-check" href="https://github.com/joshp123/padel-cli">
   **@joshp123** • `automation` `booking` `cli`
-  
+
   Playtomic 可用性检查器 + 预订 CLI。再也不会错过空闲场地。
-  
+
   <img src="/assets/showcase/padel-screenshot.jpg" alt="padel-cli screenshot" />
 </Card>
 
 <Card title="会计收件" icon="file-invoice-dollar">
   **社区** • `automation` `email` `pdf`
-  
+
   从邮件收集 PDF，为税务顾问准备文档。月度会计自动运行。
 </Card>
 
@@ -296,27 +296,27 @@ OpenClaw 连接到 Jira，然后即时生成一个新的 skill（在它出现在
 
 <Card title="xuezh 中文学习" icon="language" href="https://github.com/joshp123/xuezh">
   **@joshp123** • `learning` `voice` `skill`
-  
+
   通过 OpenClaw 实现带有发音反馈和学习流程的中文学习引擎。
-  
+
   <img src="/assets/showcase/xuezh-pronunciation.jpeg" alt="xuezh pronunciation feedback" />
 </Card>
 
 <Card title="WhatsApp 记忆库" icon="vault">
   **社区** • `memory` `transcription` `indexing`
-  
+
   导入完整的 WhatsApp 导出，转录 1k+ 条语音备忘录，与 git 日志交叉检查，输出链接的 markdown 报告。
 </Card>
 
 <Card title="Karakeep 语义搜索" icon="magnifying-glass" href="https://github.com/jamesbrooksco/karakeep-semantic-search">
   **@jamesbrooksco** • `search` `vector` `bookmarks`
-  
+
   使用 Qdrant + OpenAI/Ollama embeddings 为 Karakeep 书签添加向量搜索。
 </Card>
 
 <Card title="Inside-Out-2 记忆" icon="brain">
   **社区** • `memory` `beliefs` `self-model`
-  
+
   独立的记忆管理器，将会话文件转化为记忆 → 信念 → 演化的自我模型。
 </Card>
 
@@ -328,7 +328,7 @@ OpenClaw 连接到 Jira，然后即时生成一个新的 skill（在它出现在
 
 <Card title="Clawdia 电话桥接" icon="phone" href="https://github.com/alejandroOPI/clawdia-bridge">
   **@alejandroOPI** • `voice` `vapi` `bridge`
-  
+
   Vapi 语音助手 ↔ OpenClaw HTTP 桥接。与你的智能体进行近实时电话通话。
 </Card>
 
@@ -346,25 +346,25 @@ OpenClaw 连接到 Jira，然后即时生成一个新的 skill（在它出现在
 
 <Card title="Home Assistant 插件" icon="home" href="https://github.com/ngutman/openclaw-ha-addon">
   **@ngutman** • `homeassistant` `docker` `raspberry-pi`
-  
+
   在 Home Assistant OS 上运行的 OpenClaw Gateway 网关，支持 SSH 隧道和持久状态。
 </Card>
 
 <Card title="Home Assistant Skill" icon="toggle-on" href="https://clawhub.com/skills/homeassistant">
   **ClawHub** • `homeassistant` `skill` `automation`
-  
+
   通过自然语言控制和自动化 Home Assistant 设备。
 </Card>
 
 <Card title="Nix 打包" icon="snowflake" href="https://github.com/openclaw/nix-openclaw">
   **@openclaw** • `nix` `packaging` `deployment`
-  
+
   开箱即用的 nixified OpenClaw 配置，用于可复现的部署。
 </Card>
 
 <Card title="CalDAV 日历" icon="calendar" href="https://clawhub.com/skills/caldav-calendar">
   **ClawHub** • `calendar` `caldav` `skill`
-  
+
   使用 khal/vdirsyncer 的日历 skill。自托管日历集成。
 </Card>
 
@@ -376,17 +376,17 @@ OpenClaw 连接到 Jira，然后即时生成一个新的 skill（在它出现在
 
 <Card title="GoHome 自动化" icon="house-signal" href="https://github.com/joshp123/gohome">
   **@joshp123** • `home` `nix` `grafana`
-  
+
   Nix 原生家庭自动化，以 OpenClaw 作为界面，加上漂亮的 Grafana 仪表板。
-  
+
   <img src="/assets/showcase/gohome-grafana.png" alt="GoHome Grafana dashboard" />
 </Card>
 
 <Card title="Roborock 扫地机器人" icon="robot" href="https://github.com/joshp123/gohome/tree/main/plugins/roborock">
   **@joshp123** • `vacuum` `iot` `plugin`
-  
+
   通过自然对话控制你的 Roborock 扫地机器人。
-  
+
   <img src="/assets/showcase/roborock-screenshot.jpg" alt="Roborock status" />
 </Card>
 
@@ -398,7 +398,7 @@ OpenClaw 连接到 Jira，然后即时生成一个新的 skill（在它出现在
 
 <Card title="StarSwap 市场" icon="star" href="https://star-swap.com/">
   **社区** • `marketplace` `astronomy` `webapp`
-  
+
   完整的天文设备市场。围绕 OpenClaw 生态系统构建。
 </Card>
 

@@ -24,7 +24,7 @@ OpenClaw 为智能体使用专用的工作区目录。默认：`~/.openclaw/work
 mkdir -p ~/.openclaw/workspace
 ```
 
-2. 将默认工作区模板复制到工作区：
+1. 将默认工作区模板复制到工作区：
 
 ```bash
 cp docs/reference/templates/AGENTS.md ~/.openclaw/workspace/AGENTS.md
@@ -32,13 +32,13 @@ cp docs/reference/templates/SOUL.md ~/.openclaw/workspace/SOUL.md
 cp docs/reference/templates/TOOLS.md ~/.openclaw/workspace/TOOLS.md
 ```
 
-3. 可选：如果你想要个人助手 Skills 列表，用此文件替换 AGENTS.md：
+1. 可选：如果你想要个人助手 Skills 列表，用此文件替换 AGENTS.md：
 
 ```bash
 cp docs/reference/AGENTS.default.md ~/.openclaw/workspace/AGENTS.md
 ```
 
-4. 可选：通过设置 `agents.defaults.workspace` 选择不同的工作区（支持 `~`）：
+1. 可选：通过设置 `agents.defaults.workspace` 选择不同的工作区（支持 `~`）：
 
 ```json5
 {

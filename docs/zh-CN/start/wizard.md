@@ -91,7 +91,7 @@ openclaw agents add <name>
    - **OpenAI Code (Codex) 订阅（OAuth）**：浏览器流程；粘贴 `code#state`。
      - 当模型未设置或为 `openai/*` 时，将 `agents.defaults.model` 设置为 `openai-codex/gpt-5.2`。
    - **OpenAI API 密钥**：如果存在则使用 `OPENAI_API_KEY`，否则提示输入密钥，然后保存到 `~/.openclaw/.env` 以便 launchd 可以读取。
-   - **OpenCode Zen（多模型代理）**：提示输入 `OPENCODE_API_KEY`（或 `OPENCODE_ZEN_API_KEY`，在 https://opencode.ai/auth 获取）。
+   - **OpenCode Zen（多模型代理）**：提示输入 `OPENCODE_API_KEY`（或 `OPENCODE_ZEN_API_KEY`，在 <https://opencode.ai/auth> 获取）。
    - **API 密钥**：为你存储密钥。
    - **Vercel AI Gateway（多模型代理）**：提示输入 `AI_GATEWAY_API_KEY`。
    - 更多详情：[Vercel AI Gateway](/providers/vercel-ai-gateway)
@@ -109,18 +109,18 @@ openclaw agents add <name>
 - OAuth 凭证存储在 `~/.openclaw/credentials/oauth.json`；认证配置文件存储在 `~/.openclaw/agents/<agentId>/agent/auth-profiles.json`（API 密钥 + OAuth）。
 - 更多详情：[/concepts/oauth](/concepts/oauth)
 
-3. **工作区**
+1. **工作区**
    - 默认 `~/.openclaw/workspace`（可配置）。
    - 为智能体引导仪式播种所需的工作区文件。
    - 完整的工作区布局 + 备份指南：[智能体工作区](/concepts/agent-workspace)
 
-4. **Gateway 网关**
+2. **Gateway 网关**
    - 端口、绑定、认证模式、tailscale 暴露。
    - 认证建议：即使对于 loopback 也保持 **Token**，以便本地 WS 客户端必须进行认证。
    - 仅当你完全信任每个本地进程时才禁用认证。
    - 非 loopback 绑定仍需要认证。
 
-5. **渠道**
+3. **渠道**
    - [WhatsApp](/channels/whatsapp)：可选的二维码登录。
    - [Telegram](/channels/telegram)：机器人令牌。
    - [Discord](/channels/discord)：机器人令牌。
@@ -130,7 +130,7 @@ openclaw agents add <name>
    - [iMessage](/channels/imessage)：本地 `imsg` CLI 路径 + 数据库访问。
    - 私信安全：默认为配对。第一条私信发送验证码；通过 `openclaw pairing approve <channel> <code>` 批准或使用允许列表。
 
-6. **守护进程安装**
+4. **守护进程安装**
    - macOS：LaunchAgent
      - 需要已登录的用户会话；对于无头环境，使用自定义 LaunchDaemon（未提供）。
    - Linux（和通过 WSL2 的 Windows）：systemd 用户单元
@@ -138,16 +138,16 @@ openclaw agents add <name>
      - 可能提示 sudo（写入 `/var/lib/systemd/linger`）；它首先尝试不使用 sudo。
    - **运行时选择：**Node（推荐；WhatsApp/Telegram 需要）。**不推荐** Bun。
 
-7. **健康检查**
+5. **健康检查**
    - 启动 Gateway 网关（如果需要）并运行 `openclaw health`。
    - 提示：`openclaw status --deep` 在状态输出中添加 Gateway 网关健康探测（需要可达的 Gateway 网关）。
 
-8. **Skills（推荐）**
+6. **Skills（推荐）**
    - 读取可用的 Skills 并检查要求。
    - 让你选择节点管理器：**npm / pnpm**（不推荐 bun）。
    - 安装可选依赖项（某些在 macOS 上使用 Homebrew）。
 
-9. **完成**
+7. **完成**
    - 总结 + 后续步骤，包括用于额外功能的 iOS/Android/macOS 应用。
 
 - 如果未检测到 GUI，向导会打印控制界面的 SSH 端口转发说明，而不是打开浏览器。

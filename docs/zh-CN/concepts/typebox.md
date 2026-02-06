@@ -215,7 +215,7 @@ export type SystemEchoParams = Static<typeof SystemEchoParamsSchema>;
 export type SystemEchoResult = Static<typeof SystemEchoResultSchema>;
 ```
 
-2. **验证**
+1. **验证**
 
 在 `src/gateway/protocol/index.ts` 中，导出一个 AJV 验证器：
 
@@ -223,7 +223,7 @@ export type SystemEchoResult = Static<typeof SystemEchoResultSchema>;
 export const validateSystemEchoParams = ajv.compile<SystemEchoParams>(SystemEchoParamsSchema);
 ```
 
-3. **服务器行为**
+1. **服务器行为**
 
 在 `src/gateway/server-methods/system.ts` 中添加处理程序：
 
@@ -238,13 +238,13 @@ export const systemHandlers: GatewayRequestHandlers = {
 
 在 `src/gateway/server-methods.ts` 中注册（已合并 `systemHandlers`），然后将 `"system.echo"` 添加到 `src/gateway/server.ts` 中的 `METHODS`。
 
-4. **重新生成**
+1. **重新生成**
 
 ```bash
 pnpm protocol:check
 ```
 
-5. **测试 + 文档**
+1. **测试 + 文档**
 
 在 `src/gateway/server.*.test.ts` 中添加服务器测试，并在文档中记录该方法。
 
@@ -275,7 +275,7 @@ Swift 生成器输出：
 
 生成的 JSON Schema 在仓库的 `dist/protocol.schema.json` 中。发布的原始文件通常可在以下位置获取：
 
-- https://raw.githubusercontent.com/openclaw/openclaw/main/dist/protocol.schema.json
+- <https://raw.githubusercontent.com/openclaw/openclaw/main/dist/protocol.schema.json>
 
 ## 当你更改模式时
 
