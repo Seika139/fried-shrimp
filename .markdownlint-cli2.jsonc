@@ -16,6 +16,3 @@
   "globs": ["docs/agy/**/*.md", "docs/local/**/*.md"]
 }
 
-// TODO:
-// devcontainer で起動できるようにする
-// vps に導入
