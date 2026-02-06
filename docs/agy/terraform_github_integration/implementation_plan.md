@@ -12,7 +12,7 @@
 
 ### Terraform 構成
 
-#### [MODIFY] [main.tf](file:///Users/suzukikenichi/programs/fried-shrimp/terraform/github/main.tf)
+#### [MODIFY] [main.tf](../../../terraform/github/main.tf)
 
 - `github_branch_protection` リソースを **削除**。
 - `github_repository_ruleset` リソースを **追加**：

@@ -7,7 +7,7 @@ Terraform を使用して GitHub の設定を管理するための基盤を構�
 ### Repository Ruleset への移行
 
 - 旧来の「ブランチ保護ルール」から、GitHub 推奨の最新機能である **「Repository Ruleset」** へ移行しました。
-- [terraform/github/main.tf](file:///Users/suzukikenichi/programs/fried-shrimp/terraform/github/main.tf) を更新し、`github_repository_ruleset` リソースを採用しました。
+- [terraform/github/main.tf](../../../terraform/github/main.tf) を更新し、`github_repository_ruleset` リソースを採用しました。
 - これにより、モダンな UI での設定管理と、将来的な柔軟なバイパス設定が可能になりました。
 
 ### ルール設定の詳細
