@@ -259,10 +259,12 @@ x-i18n:
    修复/迁移配置/状态 + 运行健康检查。参阅 [Doctor](/gateway/doctor)。
 
 7. **Gateway 网关快照**
+
    ```bash
    openclaw health --json
    openclaw health --verbose   # 出错时显示目标 URL + 配置路径
    ```
+
    向运行中的 Gateway 网关请求完整快照（仅 WS）。参阅[健康检查](/gateway/health)。
 
 ## 快速开始与首次运行设置
@@ -271,8 +273,8 @@ x-i18n:
 
 使用能**看到你机器**的本地 AI 智能体。这比在 Discord 上提问有效得多，因为大多数“卡住了”的情况都是**本地配置或环境问题**，远程帮助者无法检查。
 
-- **Claude Code**：https://www.anthropic.com/claude-code/
-- **OpenAI Codex**：https://openai.com/codex/
+- **Claude Code**：<https://www.anthropic.com/claude-code/>
+- **OpenAI Codex**：<https://openai.com/codex/>
 
 这些工具可以读取仓库、运行命令、检查日志，并帮助修复你的机器级别设置（PATH、服务、权限、认证文件）。通过可编辑（git）安装提供**完整源代码**：
 
@@ -285,8 +287,8 @@ curl -fsSL https://openclaw.ai/install.sh | bash -s -- --install-method git
 提示：要求智能体**计划并监督**修复（逐步进行），然后只执行必要的命令。这样改动较小，更容易审查。
 
 如果你发现了真正的 bug 或修复方案，请提交 GitHub issue 或发送 PR：
-https://github.com/openclaw/openclaw/issues
-https://github.com/openclaw/openclaw/pulls
+<https://github.com/openclaw/openclaw/issues>
+<https://github.com/openclaw/openclaw/pulls>
 
 从以下命令开始（在寻求帮助时分享输出）：
 
@@ -385,7 +387,7 @@ Node **>= 22** 是必需的。推荐使用 `pnpm`。**不推荐**使用 Bun 运�
 openclaw gateway restart
 ```
 
-2. 检查状态和认证：
+1. 检查状态和认证：
 
 ```bash
 openclaw status
@@ -393,7 +395,7 @@ openclaw models status
 openclaw logs --follow
 ```
 
-3. 如果仍然挂起，运行：
+1. 如果仍然挂起，运行：
 
 ```bash
 openclaw doctor
@@ -421,17 +423,17 @@ openclaw doctor
 ### 在哪里查看最新版本的更新内容
 
 查看 GitHub 变更日志：
-https://github.com/openclaw/openclaw/blob/main/CHANGELOG.md
+<https://github.com/openclaw/openclaw/blob/main/CHANGELOG.md>
 
 最新条目在顶部。如果顶部部分标记为 **Unreleased**，则下一个带日期的部分是最新发布版本。条目按**亮点**、**变更**和**修复**分组（需要时还有文档/其他部分）。
 
 ### 无法访问 docs.openclaw.ai（SSL 错误），怎么办
 
 一些 Comcast/Xfinity 连接通过 Xfinity Advanced Security 错误地拦截了 `docs.openclaw.ai`。禁用该功能或将 `docs.openclaw.ai` 加入白名单，然后重试。更多详情：[故障排除](/help/troubleshooting#docsopenclawai-shows-an-ssl-error-comcastxfinity)。
-请帮助我们在此处报告以解除封锁：https://spa.xfinity.com/check_url_status。
+请帮助我们在此处报告以解除封锁：<https://spa.xfinity.com/check_url_status。>
 
 如果仍然无法访问该网站，文档在 GitHub 上有镜像：
-https://github.com/openclaw/openclaw/tree/main/docs
+<https://github.com/openclaw/openclaw/tree/main/docs>
 
 ### stable 和 beta 有什么区别
 
@@ -443,7 +445,7 @@ https://github.com/openclaw/openclaw/tree/main/docs
 我们将构建发布到 **beta**，测试后，一旦构建稳定，就会**将同一版本提升为 `latest`**。这就是为什么 beta 和 stable 可以指向**相同版本**。
 
 查看变更：
-https://github.com/openclaw/openclaw/blob/main/CHANGELOG.md
+<https://github.com/openclaw/openclaw/blob/main/CHANGELOG.md>
 
 ### 如何安装 beta 版本，beta 和 dev 有什么区别
 
@@ -461,7 +463,7 @@ curl -fsSL --proto '=https' --tlsv1.2 https://openclaw.ai/install.sh | bash -s -
 ```
 
 Windows 安装程序（PowerShell）：
-https://openclaw.ai/install.ps1
+<https://openclaw.ai/install.ps1>
 
 更多详情：[开发渠道](/install/development-channels)和[安装程序标志](/install/installer)。
 
@@ -486,7 +488,7 @@ openclaw update --channel dev
 
 这会切换到 `main` 分支并从源码更新。
 
-2. **可编辑安装（从安装程序网站）：**
+1. **可编辑安装（从安装程序网站）：**
 
 ```bash
 curl -fsSL https://openclaw.ai/install.sh | bash -s -- --install-method git
@@ -541,9 +543,11 @@ curl -fsSL https://openclaw.ai/install.sh | bash -s -- --install-method git --ve
 
 - 你的 npm 全局 bin 文件夹不在 PATH 中。
 - 检查路径：
+
   ```powershell
   npm config get prefix
   ```
+
 - 确保 `<prefix>\\bin` 在 PATH 中（在大多数系统上是 `%AppData%\\npm`）。
 - 更新 PATH 后关闭并重新打开 PowerShell。
 
@@ -815,7 +819,7 @@ Doctor 会检测 Gateway 网关服务入口点不匹配，并提供重写服务�
 
 备份提示：参阅[备份策略](/help/faq#whats-the-recommended-backup-strategy)。
 
-### 应该在笔记本电脑还是 VPS 上运行 Gateway 网关简短回答：**如果你想要 24/7 可靠性，使用 VPS**。如果你想要最低摩擦且能接受休眠/重启，在本地运行。
+### 应该在笔记本电脑还是 VPS 上运行 Gateway 网关简短回答：**如果你想要 24/7 可靠性，使用 VPS**。如果你想要最低摩擦且能接受休眠/重启，在本地运行
 
 **笔记本（本地 Gateway 网关）**
 
@@ -928,7 +932,7 @@ OpenClaw 是一个**个人助手**和协调层，不是 IDE 替代品。使用 C
 - **常开 Gateway 网关**（在 VPS 上运行，从任何地方交互）
 - 用于本地浏览器/屏幕/摄像头/执行的**节点**
 
-展示：https://openclaw.ai/showcase
+展示：<https://openclaw.ai/showcase>
 
 ## Skills 与自动化
 
@@ -983,7 +987,7 @@ openclaw cron runs --id <jobId> --limit 50
 ### 如何在 Linux 上安装 Skills
 
 使用 **ClawHub**（CLI）或将 Skills 放入你的工作区。macOS Skills UI 在 Linux 上不可用。
-浏览 Skills：https://clawhub.com。
+浏览 Skills：<https://clawhub.com。>
 
 安装 ClawHub CLI（选择一个包管理器）：
 
@@ -1022,13 +1026,16 @@ pnpm add -g clawhub
 保持 Gateway 网关在 Linux 上，但使所需的 CLI 二进制文件解析为在 Mac 上运行的 SSH 包装器。然后覆盖 Skills 以允许 Linux 使其保持符合条件。
 
 1. 为二进制文件创建 SSH 包装器（示例：`imsg`）：
+
    ```bash
    #!/usr/bin/env bash
    set -euo pipefail
    exec ssh -T user@mac-host /opt/homebrew/bin/imsg "$@"
    ```
+
 2. 将包装器放在 Linux 主机的 `PATH` 上（例如 `~/bin/imsg`）。
 3. 覆盖 Skills 元数据（工作区或 `~/.openclaw/skills`）以允许 Linux：
+
    ```markdown
    ---
    name: imsg
@@ -1036,6 +1043,7 @@ pnpm add -g clawhub
    metadata: { "openclaw": { "os": ["darwin", "linux"], "requires": { "bins": ["imsg"] } } }
    ---
    ```
+
 4. 开始新会话以刷新 Skills 快照。
 
 对于 iMessage，你也可以将 `channels.imessage.cliPath` 指向 SSH 包装器（OpenClaw 只需要 stdio）。参阅 [iMessage](/channels/imessage)。
@@ -1371,6 +1379,7 @@ Telegram → Gateway 网关 → 智能体 → `node.*` → 节点 → Gateway �
 3. 确保 Gateway 网关 WS 可达（tailnet 绑定或 SSH 隧道）。
 4. 在本地打开 macOS 应用并以**远程 over SSH** 模式连接（或直接 tailnet），使其可以注册为节点。
 5. 在 Gateway 网关上批准节点：
+
    ```bash
    openclaw nodes pending
    openclaw nodes approve <requestId>
@@ -1469,10 +1478,12 @@ SSH 对临时 shell 访问很好，但节点对于持续的智能体工作流和
 最简步骤：
 
 1. **在 VPS 上安装并登录**
+
    ```bash
    curl -fsSL https://tailscale.com/install.sh | sh
    sudo tailscale up
    ```
+
 2. **在 Mac 上安装并登录**
    - 使用 Tailscale 应用并登录到同一个 tailnet。
 3. **启用 MagicDNS（推荐）**
@@ -1498,6 +1509,7 @@ Serve 暴露 **Gateway 网关控制 UI + WS**。节点通过同一个 Gateway �
 1. **确保 VPS + Mac 在同一个 tailnet 上**。
 2. **使用 macOS 应用的远程模式**（SSH 目标可以是 tailnet 主机名）。应用会隧道 Gateway 网关端口并作为节点连接。
 3. **在 Gateway 网关上批准节点**：
+
    ```bash
    openclaw nodes pending
    openclaw nodes approve <requestId>
@@ -1557,9 +1569,11 @@ OpenClaw 从父进程（shell、launchd/systemd、CI 等）读取环境变量，
 如果 Gateway 网关作为服务（launchd/systemd）运行，它不会继承你的 shell 环境。通过以下方式之一修复：
 
 1. 将令牌放在 `~/.openclaw/.env` 中：
+
    ```
    COPILOT_GITHUB_TOKEN=...
    ```
+
 2. 或启用 shell 导入（`env.shellEnv.enabled: true`）。
 3. 或将其添加到配置的 `env` 块中（仅在缺失时应用）。
 
@@ -1649,6 +1663,7 @@ openclaw onboard --install-daemon
   或 `/compact <instructions>` 来引导总结。
 
 - **重置**（为同一聊天键开始新的会话 ID）：
+
   ```
   /new
   /reset
@@ -1898,9 +1913,11 @@ Model "provider/model" is not allowed. Use /model to list available models.
 2. 确保 MiniMax 已配置（向导或 JSON），或者 MiniMax API 密钥存在于环境/认证配置文件中以便提供商可以被注入。
 3. 使用精确的模型 ID（区分大小写）：`minimax/MiniMax-M2.1` 或 `minimax/MiniMax-M2.1-lightning`。
 4. 运行：
+
    ```bash
    openclaw models list
    ```
+
    并从列表中选择（或在聊天中使用 `/model list`）。
 
 参阅 [MiniMax](/providers/minimax) 和[模型](/concepts/models)。
@@ -2062,9 +2079,11 @@ No credentials found for profile "anthropic:default"
 - **如果你想使用 API 密钥**
   - 在 **Gateway 网关主机**上将 `ANTHROPIC_API_KEY` 放入 `~/.openclaw/.env`。
   - 清除任何强制缺失配置文件的固定顺序：
+
     ```bash
     openclaw models auth order clear --provider anthropic
     ```
+
 - **确认你在 Gateway 网关主机上运行命令**
   - 在远程模式下，认证配置文件位于 Gateway 网关机器上，而不是你的笔记本上。
 
@@ -2412,7 +2431,7 @@ openclaw logs --follow
 
 文档：[TUI](/tui)、[斜杠命令](/tools/slash-commands)。
 
-### 如何完全停止然后启动 Gateway 网关如果你安装了服务：
+### 如何完全停止然后启动 Gateway 网关如果你安装了服务
 
 ```bash
 openclaw gateway stop

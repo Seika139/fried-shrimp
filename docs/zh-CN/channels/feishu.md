@@ -75,7 +75,7 @@ openclaw channels add
 
 访问 [飞书开放平台](https://open.feishu.cn/app)，使用飞书账号登录。
 
-Lark（国际版）请使用 https://open.larksuite.com/app，并在配置中设置 `domain: "lark"`。
+Lark（国际版）请使用 <https://open.larksuite.com/app，并在配置中设置> `domain: "lark"`。
 
 ### 2. 创建应用
 
@@ -263,10 +263,12 @@ openclaw pairing approve feishu <配对码>
 
 - **默认**：`dmPolicy: "pairing"`，陌生用户会收到配对码
 - **批准配对**：
+
   ```bash
   openclaw pairing list feishu      # 查看待审批列表
   openclaw pairing approve feishu <CODE>  # 批准
   ```
+
 - **白名单模式**：通过 `channels.feishu.allowFrom` 配置允许的用户 Open ID
 
 ### 群组访问

@@ -112,10 +112,13 @@ Gateway 网关广播小型非机密提示以方便 UI 流程：
 有用的内置工具：
 
 - 浏览实例：
+
   ```bash
   dns-sd -B _openclaw-gw._tcp local.
   ```
+
 - 解析单个实例（替换 `<instance>`）：
+
   ```bash
   dns-sd -L "<instance>" _openclaw-gw._tcp local.
   ```

@@ -105,10 +105,13 @@ openclaw nodes approve <requestId>
 ### 5）验证节点已连接
 
 - 通过节点状态：
+
   ```bash
   openclaw nodes status
   ```
+
 - 通过 Gateway 网关：
+
   ```bash
   openclaw gateway call node.list --params "{}"
   ```

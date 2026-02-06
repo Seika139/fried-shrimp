@@ -30,7 +30,7 @@ This document describes how the OpenProse VM tracks execution state using a **Po
 | Platform             | Command                                         | Notes                  |
 | -------------------- | ----------------------------------------------- | ---------------------- |
 | macOS (Homebrew)     | `brew install libpq && brew link --force libpq` | Client-only; no server |
-| macOS (Postgres.app) | Download from https://postgresapp.com           | Full install with GUI  |
+| macOS (Postgres.app) | Download from <https://postgresapp.com>           | Full install with GUI  |
 | Debian/Ubuntu        | `apt install postgresql-client`                 | Client-only            |
 | Fedora/RHEL          | `dnf install postgresql`                        | Client-only            |
 | Arch Linux           | `pacman -S postgresql-libs`                     | Client-only            |

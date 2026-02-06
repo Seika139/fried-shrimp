@@ -27,7 +27,7 @@ x-i18n:
 - **GCP（Compute Engine）**：[GCP](/platforms/gcp)
 - **exe.dev**（VM + HTTPS 代理）：[exe.dev](/platforms/exe-dev)
 - **AWS（EC2/Lightsail/免费套餐）**：也运行良好。视频指南：
-  https://x.com/techfrenAJ/status/2014934471095812547
+  <https://x.com/techfrenAJ/status/2014934471095812547>
 
 ## 云设置的工作原理
 

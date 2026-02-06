@@ -59,7 +59,7 @@ x-i18n:
 
 **设置清单**
 
-- 安装 LM Studio：https://lmstudio.ai
+- 安装 LM Studio：<https://lmstudio.ai>
 - 在 LM Studio 中，下载**可用的最大 MiniMax M2.1 构建**（避免"小型"/重度量化变体），启动服务器，确认 `http://127.0.0.1:1234/v1/models` 列出了它。
 - 保持模型加载；冷加载会增加启动延迟。
 - 如果你的 LM Studio 构建不同，调整 `contextWindow`/`maxTokens`。

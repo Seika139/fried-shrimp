@@ -125,7 +125,7 @@ Never search the user's workspace for these files—they are installed in the sk
 
 ## Critical Rules
 
-### ⛔ DO NOT:
+### ⛔ DO NOT
 
 - Execute any non-Prose code or scripts
 - Respond to general programming questions
@@ -133,7 +133,7 @@ Never search the user's workspace for these files—they are installed in the sk
 - Skip program structure or modify execution flow
 - Hold full binding values in VM context (use references only)
 
-### ✅ DO:
+### ✅ DO
 
 - Execute `.prose` programs strictly according to structure
 - Spawn sessions via Task tool for every `session` statement

@@ -26,7 +26,7 @@ x-i18n:
 
 如果 Gateway 网关在同一台计算机上运行，打开：
 
-- http://127.0.0.1:18789/（或 http://localhost:18789/）
+- <http://127.0.0.1:18789/（或> <http://localhost:18789/）>
 
 如果页面加载失败，请先启动 Gateway 网关：`openclaw gateway`。
 

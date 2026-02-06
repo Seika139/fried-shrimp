@@ -18,7 +18,7 @@ x-i18n:
 
 OpenProse 是一种可移植的、以 Markdown 为中心的工作流格式，用于编排 AI 会话。在 OpenClaw 中，它作为插件发布，安装一个 OpenProse Skills 包以及一个 `/prose` 斜杠命令。程序存放在 `.prose` 文件中，可以生成多个具有显式控制流的子智能体。
 
-官方网站：https://www.prose.md
+官方网站：<https://www.prose.md>
 
 ## 它能做什么
 

@@ -81,9 +81,9 @@ x-i18n:
 
 多账户支持：使用 `channels.telegram.accounts`，每个账户有独立的 token 和可选的 `name`。参见 [`gateway/configuration`](/gateway/configuration#telegramaccounts--discordaccounts--slackaccounts--signalaccounts--imessageaccounts) 了解共享模式。
 
-3. 启动 Gateway 网关。当 token 解析成功时 Telegram 启动（配置优先，环境变量回退）。
-4. 私信访问默认为配对模式。机器人首次被联系时批准配对码。
-5. 对于群组：添加机器人，决定隐私/管理员行为（见下文），然后设置 `channels.telegram.groups` 来控制提及门控和允许列表。
+1. 启动 Gateway 网关。当 token 解析成功时 Telegram 启动（配置优先，环境变量回退）。
+2. 私信访问默认为配对模式。机器人首次被联系时批准配对码。
+3. 对于群组：添加机器人，决定隐私/管理员行为（见下文），然后设置 `channels.telegram.groups` 来控制提及门控和允许列表。
 
 ## Token + 隐私 + 权限（Telegram 端）
 
@@ -370,6 +370,7 @@ Telegram 功能可以在两个级别配置（上面显示的对象形式；旧�
 
 1. 私信你的机器人。
 2. 使用你的机器人 token 获取更新并读取 `message.from.id`：
+
    ```bash
    curl "https://api.telegram.org/bot<bot_token>/getUpdates"
    ```
