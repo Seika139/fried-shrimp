@@ -18,15 +18,17 @@ Fork したリポジトリには、通常 2 つの「接続先（リモート）
 $ git remote -v
 origin  git@github.com:Seika139/fried-shrimp.git (fetch)
 origin  git@github.com:Seika139/fried-shrimp.git (push)
-upstream        git@github.com:openclaw/openclaw.git (fetch)
-upstream        git@github.com:openclaw/openclaw.git (push)
 
 # もし、upstream が登録されていない場合は
 # 以下を実行して本家リポジトリを 'upstream' という名前で登録する
 git remote add upstream https://github.com/openclaw/openclaw.git
 
 # 登録されたことを確認
-git remote -v
+$ git remote -v
+origin  git@github.com:Seika139/fried-shrimp.git (fetch)
+origin  git@github.com:Seika139/fried-shrimp.git (push)
+upstream        git@github.com:openclaw/openclaw.git (fetch)
+upstream        git@github.com:openclaw/openclaw.git (push)
 ```
 
 ## 3. 同期の手順：本家の更新を取り込む
