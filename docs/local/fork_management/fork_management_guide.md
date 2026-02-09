@@ -1,87 +1,86 @@
 # Fork リポジトリ管理・運用ガイド
 
-OpenClaw 本家 (`openclaw/openclaw`) から Fork したこのリポジトリを、自分の変更を加えつつ本家の更新も取り込んでいくためのガイドです。
+OpenClaw 本家 (`openclaw/openclaw`) から Fork したこのリポジトリを、効率的に運用するためのガイドです。
+現在は **`develop` ブランチを開発のメイン**とし、**`main` ブランチを本家（upstream）への追従用**として使用する運用を採用しています。
 
-## 1. 基本コンセプト：2 つのリモート
+## 1. ブランチの役割
 
-Fork したリポジトリには、通常 2 つの「接続先（リモート）」を設定します。
+- **`develop`**: **あなたの作業用メインブランチ**。リポジトリのデフォルトブランチです。新機能の開発や修正はここから開始します。
+- **`main`**: **本家 (upstream) 追従用ブランチ**。本家の `main` と常に一致させ、あなたの変更は直接加えません。
 
-- **`origin`**: あなた自身の GitHub リポジトリ (`Seika139/fried-shrimp`)。あなたが直接コードをプッシュする場所です。
-- **`upstream`**: 元になった本家のリポジトリ (`openclaw/openclaw`)。ここから最新の更新を取得します。
+---
 
-## 2. セットアップ：Upstream の登録
+## 2. リモート設定の確認
 
-リポジトリをクローンした直後には `origin` しか登録されていません。以下のコマンドで本家を登録します。
+以下の 2 つのリモートが設定されていることを確認してください。
+
+- **`origin`**: 自身の GitHub リポジトリ (`Seika139/fried-shrimp`)
+- **`upstream`**: 本家のリポジトリ (`openclaw/openclaw`)
 
 ```bash
-# 現在のリモートを確認
 $ git remote -v
-origin  git@github.com:Seika139/fried-shrimp.git (fetch)
-origin  git@github.com:Seika139/fried-shrimp.git (push)
-
-# もし、upstream が登録されていない場合は
-# 以下を実行して本家リポジトリを 'upstream' という名前で登録する
-git remote add upstream https://github.com/openclaw/openclaw.git
-
-# 登録されたことを確認
-$ git remote -v
-origin  git@github.com:Seika139/fried-shrimp.git (fetch)
-origin  git@github.com:Seika139/fried-shrimp.git (push)
-upstream        git@github.com:openclaw/openclaw.git (fetch)
-upstream        git@github.com:openclaw/openclaw.git (push)
+origin    git@github.com:Seika139/fried-shrimp.git (fetch/push)
+upstream  https://github.com/openclaw/openclaw.git (fetch/push)
 ```
 
-## 3. 同期の手順：本家の更新を取り込む
+---
 
-本家で新しい機能や修正が追加されたら、自分のリポジトリに取り込みます。
+## 3. main ブランチの更新手順 (Upstream 追従)
 
-### ステップ 1: 本家の最新情報を取得
-
-```bash
-git fetch upstream
-```
-
-### ステップ 2: 自分のブランチに統合する
-
-「Rebase（リベース）」という方法が、履歴が一直線になり綺麗なので推奨されます。
+本家 (upstream) に新しい更新があった場合、まず `main` ブランチを同期させます。
+このブランチには自分の変更がないため、常にコンフルクトなしで更新できるはずです。
 
 ```bash
-# 自分の main ブランチにいることを確認
+# 1. main ブランチに切り替え
 git checkout main
 
-# 本家の更新の上に、自分の変更を「乗せ直す」
-git rebase upstream/main
+# 2. 本家から最新情報を取得
+git fetch upstream
+
+# 3. 本家の main を自分の main に反映
+git reset --hard upstream/main
+
+# 4. 自分の GitHub (origin) に反映
+git push origin main --force
+```
+
+---
+
+## 4. develop ブランチの更新手順 (作業内容への統合)
+
+`main` が最新になったら、その変更を `develop` ブランチに取り込みます。
+
+```bash
+# 1. develop ブランチに切り替え
+git checkout develop
+
+# 2. main (最新の本家) の変更をマージ
+git merge main
+
+# (もしコンフリクトが発生したら解決してコミット)
+
+# 3. 自分の GitHub (origin) に反映
+git push origin develop
 ```
 
 > [!TIP]
-> **Rebase と Merge の違い**
->
-> - **Rebase**: 自分の変更履歴が本家の最新版の「後に」続くように整列されます。
-> - **Merge**: 本家の更新を自分の履歴に「流し込む」専用のコミット（Merge commit）が作成されます。
+> **なぜこの運用にするのか？**
+> `main` ブランチを本家と全く同じ状態に保つことで、いつでも「本家の最新状態」をクリーンに参照できます。また、`develop` でのコンフリクト解消に失敗しても、`main` からやり直すことが容易になります。
 
-## 4. 競合（Conflict）が起きたら
+---
 
-同じ場所を編集していた場合、Git が停止して解決を求めてきます。
+## 5. 日々の開発フロー
 
-1. **VS Code などのエディタで解決**:
-   VS Code で該当ファイルを開くと、「Accept Current Change（自分の変更を採用）」「Accept Incoming Change（本家の変更を採用）」「Accept Both」などの選択肢が出ます。コードを見て適切な方を選びます。
-2. **解決を報告**:
+1. `develop` ブランチで作業を行う。
+2. 適宜 `origin/develop` にプッシュする。
+3. 本家に更新があれば、上記「3」と「4」の手順で `develop` に取り込む。
 
-   ```bash
-   git add <修正したファイル>
-   git rebase --continue
-   ```
+大きな機能追加などは、`develop` からさらに `feature/xxx` ブランチを切って作業し、完了後に `develop` へマージすることを推奨します。
 
-## 5. 自分の GitHub に反映
-
-同期が完了したら、自分の GitHub リポジトリにプッシュします。
-※ Rebase を行った後は履歴が変わるため、強制プッシュ (`--force-with-lease`) が必要になる場合があります。
-
-```bash
-git push origin main --force-with-lease
-```
+---
 
 ## 6. 運用のコツ
 
-- **こまめに同期する**: 本家との乖離が大きくなる前に、週に一度などは `git fetch upstream` することをお勧めします。
-- **自分の変更は別ブランチで**: `main` ブランチは本家との同期用とし、大きな新機能開発は `feature/my-new-tool` のような別ブランチで行うと、管理がさらに楽になります。
+- **こまめに同期する**: 本家との乖離が大きくなる前に、定期的に上記の手順で同期することをお勧めします。
+- **GitHub の "Sync fork" ボタンは使わない**: GitHub 上のボタンを使うと、不要なマージコミットが作成されたり、予期せぬコンフリクトの原因になることがあります。本ガイドの `git reset --hard` を使う手順の方が、履歴をクリーンに保てるため推奨されます。
+- **自分の変更は常に develop で**: `main` ブランチは upstream 追従専用とし、間違えて直接コミットしないよう注意してください。
