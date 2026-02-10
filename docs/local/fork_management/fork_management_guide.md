@@ -5,7 +5,8 @@ OpenClaw 本家 (`openclaw/openclaw`) から Fork したこのリポジトリを
 
 ## 1. ブランチの役割
 
-- **`develop`**: **あなたの作業用メインブランチ**。リポジトリのデフォルトブランチです。新機能の開発や修正はここから開始します。
+- **`develop`**: **あなたの作業用メインブランチ**。リポジトリのデフォルトブランチです。
+  - **保護ルール**: 直接のプッシュは禁止されており、**必ずプルリクエスト (PR) を経由してマージする必要があります。**
 - **`main`**: **本家 (upstream) 追従用ブランチ**。本家の `main` と常に一致させ、あなたの変更は直接加えません。
 
 ---
@@ -28,59 +29,55 @@ upstream  https://github.com/openclaw/openclaw.git (fetch/push)
 ## 3. main ブランチの更新手順 (Upstream 追従)
 
 本家 (upstream) に新しい更新があった場合、まず `main` ブランチを同期させます。
-このブランチには自分の変更がないため、常にコンフルクトなしで更新できるはずです。
+`mise run follow-upstream` コマンドで安全に一括更新できます。
 
 ```bash
-# 1. main ブランチに切り替え
-git checkout main
-
-# 2. 本家から最新情報を取得
-git fetch upstream
-
-# 3. 本家の main を自分の main に反映
-git reset --hard upstream/main
-
-# 4. 自分の GitHub (origin) に反映
-git push origin main --force
+# コマンド一つで main の切り替え、fetch、reset、origin へのプッシュを行います
+mise run follow-upstream
 ```
+
+> [!IMPORTANT]
+> 手動で行う場合は、必ず `main` に切り替えてから `git reset --hard upstream/main` を行ってください。
 
 ---
 
-## 4. develop ブランチの更新手順 (作業内容への統合)
+## 4. develop ブランチの更新手順 (PR 経由の統合)
 
-`main` が最新になったら、その変更を `develop` ブランチに取り込みます。
+`develop` ブランチは保護されているため、`main` の更新を取り込むには **GitHub 上で PR を作成してマージ** する必要があります。
 
-```bash
-# 1. develop ブランチに切り替え
-git checkout develop
+### 手順
 
-# 2. main (最新の本家) の変更をマージ
-git merge main
+1. **同期用ブランチの作成とプッシュ**:
 
-# (もしコンフリクトが発生したら解決してコミット)
+    ```bash
+    git checkout main
+    git checkout -b sync-upstream-to-develop
+    git push origin sync-upstream-to-develop
+    ```
 
-# 3. 自分の GitHub (origin) に反映
-git push origin develop
-```
+2. **GitHub で PR を作成**:
+    - `base: develop` ← `compare: sync-upstream-to-develop` の PR を作成します。
+3. **マージと後片付け**:
+    - GitHub 上で PR をマージします。
+    - ローカルに戻り、作業を再開します。
 
-> [!TIP]
-> **なぜこの運用にするのか？**
-> `main` ブランチを本家と全く同じ状態に保つことで、いつでも「本家の最新状態」をクリーンに参照できます。また、`develop` でのコンフリクト解消に失敗しても、`main` からやり直すことが容易になります。
+    ```bash
+    git checkout develop
+    git pull origin develop
+    git branch -d sync-upstream-to-develop
+    ```
 
 ---
 
 ## 5. 日々の開発フロー
 
-1. `develop` ブランチで作業を行う。
-2. 適宜 `origin/develop` にプッシュする。
-3. 本家に更新があれば、上記「3」と「4」の手順で `develop` に取り込む。
-
-大きな機能追加などは、`develop` からさらに `feature/xxx` ブランチを切って作業し、完了後に `develop` へマージすることを推奨します。
+1. `develop` から作業用ブランチ（例: `feature/my-fix`）を作成。
+2. 作業が完了したら `origin` にプッシュし、`develop` への PR を作成。
+3. PR をマージして `develop` を更新。
 
 ---
 
 ## 6. 運用のコツ
 
-- **こまめに同期する**: 本家との乖離が大きくなる前に、定期的に上記の手順で同期することをお勧めします。
-- **GitHub の "Sync fork" ボタンは使わない**: GitHub 上のボタンを使うと、不要なマージコミットが作成されたり、予期せぬコンフリクトの原因になることがあります。本ガイドの `git reset --hard` を使う手順の方が、履歴をクリーンに保てるため推奨されます。
-- **自分の変更は常に develop で**: `main` ブランチは upstream 追従専用とし、間違えて直接コミットしないよう注意してください。
+- **GitHub の "Sync fork" ボタンは使わない**: `main` を直接更新するボタンですが、履歴をクリーンに保つため `mise run follow-upstream` (CLI) の使用を推奨します。
+- **自分の変更は常に PR で**: デフォルトブランチ (`develop`) は保護されているため、直接のプッシュはエラーになります。

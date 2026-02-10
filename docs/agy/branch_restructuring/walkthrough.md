@@ -9,7 +9,7 @@
 
 ### 2. Terraform によるデフォルトブランチの切り替え
 
-[main.tf](file:///Users/suzukikenichi/programs/fried-shrimp/terraform/github/main.tf) に `github_branch_default` リソースを追加し、`mise run terra-github` を実行して GitHub 上のデフォルトブランチを `develop` に変更しました。
+[main.tf](../../../terraform/github/main.tf) に `github_branch_default` リソースを追加し、`mise run terra-github` を実行して GitHub 上のデフォルトブランチを `develop` に変更しました。
 
 ### 3. `main` ブランチのリセット
 
@@ -18,8 +18,8 @@
 
 ### 4. 運用ガイドの更新
 
-[fork_management_guide.md](file:///Users/suzukikenichi/programs/fried-shrimp/docs/local/fork_management/fork_management_guide.md) を全面的に刷新しました。
-新体制（`main`: 追従用, `develop`: 開発用）における日常的な更新手順を明文化しています。
+[fork_management_guide.md](../../../docs/local/fork_management/fork_management_guide.md) を全面的に刷新しました。
+新体制（`main`: 追従用、 `develop`: 開発用）における日常的な更新手順を明文化しています。
 
 ## 確認事項
 

@@ -16,7 +16,7 @@ GitHub 上のデフォルトブランチを `develop` に変更しました。
 
 ### 4. 運用ガイドの更新
 
-[fork_management_guide.md](file:///Users/suzukikenichi/programs/fried-shrimp/docs/local/fork_management/fork_management_guide.md) を刷新し、新運用フローと注記（Sync fork ボタンの回避など）を追加しました。
+[fork_management_guide.md](../../../docs/local/fork_management/fork_management_guide.md) を刷新し、新運用フローと注記（Sync fork ボタンの回避など）を追加しました。
 
 ### 5. `follow-upstream` タスクの修正
 

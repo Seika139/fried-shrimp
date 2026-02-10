@@ -13,25 +13,25 @@
 
 1. 現在の `main`（作業内容やPRが含まれている状態）から `develop` ブランチを作成し、リモートにプッシュします。
 
-    ```bash
-    git checkout -b develop
-    git push -u origin develop
-    ```
+   ```bash
+   git checkout -b develop
+   git push -u origin develop
+   ```
 
 ### 2. Terraform 操作 (リポジトリ設定の変更)
 
-1. [main.tf](file:///Users/suzukikenichi/programs/fried-shrimp/terraform/github/main.tf) を更新し、`github_branch_default` リソースを追加してデフォルトブランチを `develop` に設定します。
+1. [main.tf](../../../terraform/github/main.tf) を更新し、`github_branch_default` リソースを追加してデフォルトブランチを `develop` に設定します。
 2. `terraform apply` を実行し、GitHub 上のデフォルトブランチを `develop` に切り替えます。
 
 ### 3. Git 操作 (mainブランチのクリーンアップ)
 
 1. `main` ブランチを `upstream/main` と完全に同期させ、ローカルの変更を破棄します。
 
-    ```bash
-    git checkout main
-    git reset --hard upstream/main
-    git push origin main --force
-    ```
+   ```bash
+   git checkout main
+   git reset --hard upstream/main
+   git push origin main --force
+   ```
 
 ## 検証計画
 
