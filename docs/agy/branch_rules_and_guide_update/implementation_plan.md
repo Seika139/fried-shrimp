@@ -14,7 +14,7 @@ Terraform を使用して `main` と `develop` の両ブランチに適切な保
    - **`main`**: 誤削除防止のためルールセットに含めるが、upstream 同期のための強制プッシュを許可するか、バイパス設定を検討。
    - `conditions` の `include` に `refs/heads/main` を追加し、`~DEFAULT_BRANCH` と併せて保護します。
 
-### [MODIFY] [fork_management_guide.md](../../../docs/local/fork_management/fork_management_guide.md)
+### [MODIFY] [fork_management_guide.md](../../../docs/seika/fork_management/fork_management_guide.md)
 
 1. **同期フローの修正**: `develop` へのマージに PR が必要なため、GitHub 上で PR を作成してマージする手順を追記します。
 2. **CLI での暫定対応**: または、必要に応じてブランチルールの管理者バイパス権限を利用した手順（強制プッシュではないが直接マージ）について言及します。
