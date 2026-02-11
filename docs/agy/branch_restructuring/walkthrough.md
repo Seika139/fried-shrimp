@@ -18,7 +18,7 @@
 
 ### 4. 運用ガイドの更新
 
-[fork_management_guide.md](../../../docs/local/fork_management/fork_management_guide.md) を全面的に刷新しました。
+[fork_management_guide.md](../../../docs/seika/fork_management/fork_management_guide.md) を全面的に刷新しました。
 新体制（`main`: 追従用、 `develop`: 開発用）における日常的な更新手順を明文化しています。
 
 ## 確認事項

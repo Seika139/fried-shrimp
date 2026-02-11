@@ -1,3 +1,8 @@
+# AGENTS
+
+これは openclaw/openclaw の fork リポジトリです。個人用であり、OpenClaw 側にプルリクエストやIssueを送る想定はありません。
+以下は元のリポジトリのガイドラインです。
+
 # Repository Guidelines
 
 - Repo: https://github.com/openclaw/openclaw
