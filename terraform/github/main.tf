@@ -35,16 +35,22 @@ resource "github_repository" "repo" {
   vulnerability_alerts   = true
 }
 
-# 4. リポジトリルールセットの設定
-resource "github_repository_ruleset" "main" {
-  name        = "main-protection"
+# 4. デフォルトブランチの設定
+resource "github_branch_default" "default" {
+  repository = github_repository.repo.name
+  branch     = "develop"
+}
+
+# 5. develop ブランチの保護ルール
+resource "github_repository_ruleset" "develop" {
+  name        = "develop-protection"
   repository  = github_repository.repo.name
   target      = "branch"
   enforcement = "active"
 
   conditions {
     ref_name {
-      include = ["~DEFAULT_BRANCH"]
+      include = ["refs/heads/develop"]
       exclude = []
     }
   }
@@ -73,5 +79,25 @@ resource "github_repository_ruleset" "main" {
         integration_id = 15368
       }
     }
+  }
+}
+
+# 6. main ブランチの保護ルール (upstream 追従用)
+resource "github_repository_ruleset" "main" {
+  name        = "main-protection"
+  repository  = github_repository.repo.name
+  target      = "branch"
+  enforcement = "active"
+
+  conditions {
+    ref_name {
+      include = ["refs/heads/main"]
+      exclude = []
+    }
+  }
+
+  rules {
+    deletion         = true
+    non_fast_forward = false # upstream 同期（reset --hard）を許可するために false に設定
   }
 }
