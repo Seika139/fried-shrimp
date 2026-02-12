@@ -67,21 +67,3 @@ else
   printf "{{vars.text_red}}%s{{vars.text_reset}}\n" "shellcheck is not installed; skipping shell script linting."
 fi
 '''
-
-[tasks.follow-upstream]
-description = "本家(upstream)の最新状態を main ブランチに反映し、origin へプッシュする"
-shell = "bash -c"
-run = '''
-set -e
-echo "Checking out main branch..."
-git checkout main
-
-echo "Fetching from upstream..."
-git fetch upstream
-
-echo "Resetting main to upstream/main..."
-git reset --hard upstream/main
-
-echo "Pushing to origin main..."
-git push origin main --force
-'''
