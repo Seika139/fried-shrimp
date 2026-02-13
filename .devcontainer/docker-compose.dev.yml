@@ -14,3 +14,10 @@ services:
     # Typically in devcontainer, we might want to just sleep so user can run terminals, OR run the dev server.
     # Let's run the dev server but allow overriding.
     command: ["pnpm", "gateway:dev"]
+    environment:
+      OPENCLAW_CONFIG_DIR: /home/node/.openclaw
+      OPENCLAW_WORKSPACE_DIR: /home/node/.openclaw/workspace
+      OPENCLAW_GATEWAY_PORT: 18789
+      OPENCLAW_BRIDGE_PORT: 18790
+      OPENCLAW_GATEWAY_BIND: lan
+      OPENCLAW_IMAGE: openclaw:local

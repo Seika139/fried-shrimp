@@ -47,8 +47,9 @@ Dev Container (Docker Compose) が環境変数を正しく読み込めるよう�
 
    > **注意**: これにより `.env` ファイルの内容が平文に書き換わります。`git status` で差分が表示されますが、**この変更は絶対にコミットしないでください**。
 
-3. **環境変数の初期化**:
-   Dev Container の起動に必要な環境変数を `.env` に設定します。
+3. **環境変数の初期化 (トークン生成)**:
+   Dev Container の起動に必要なシークレット（`OPENCLAW_GATEWAY_TOKEN`）を `.env` に生成します。
+   ※ パス設定などは `docker-compose.dev.yml` で自動設定されるため、このスクリプトはトークンのみを扱います。
 
    ```bash
    bash .devcontainer/setup-env.sh

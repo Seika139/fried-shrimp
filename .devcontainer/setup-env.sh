@@ -4,31 +4,6 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 ENV_FILE="$ROOT_DIR/.env"
 
-# Define default values
-OPENCLAW_CONFIG_DIR="${OPENCLAW_CONFIG_DIR:-$HOME/.openclaw}"
-OPENCLAW_WORKSPACE_DIR="${OPENCLAW_WORKSPACE_DIR:-$HOME/.openclaw/workspace}"
-OPENCLAW_GATEWAY_PORT="${OPENCLAW_GATEWAY_PORT:-18789}"
-OPENCLAW_BRIDGE_PORT="${OPENCLAW_BRIDGE_PORT:-18790}"
-OPENCLAW_GATEWAY_BIND="${OPENCLAW_GATEWAY_BIND:-lan}"
-IMAGE_NAME="${OPENCLAW_IMAGE:-openclaw:local}"
-OPENCLAW_IMAGE="$IMAGE_NAME"
-OPENCLAW_DOCKER_APT_PACKAGES="${OPENCLAW_DOCKER_APT_PACKAGES:-}"
-EXTRA_MOUNTS="${OPENCLAW_EXTRA_MOUNTS:-}"
-OPENCLAW_EXTRA_MOUNTS="$EXTRA_MOUNTS"
-HOME_VOLUME_NAME="${OPENCLAW_HOME_VOLUME:-}"
-OPENCLAW_HOME_VOLUME="$HOME_VOLUME_NAME"
-
-# Export variables so they are available if needed (though we mostly write to .env)
-export OPENCLAW_CONFIG_DIR
-export OPENCLAW_WORKSPACE_DIR
-export OPENCLAW_GATEWAY_PORT
-export OPENCLAW_BRIDGE_PORT
-export OPENCLAW_GATEWAY_BIND
-export OPENCLAW_IMAGE
-export OPENCLAW_DOCKER_APT_PACKAGES
-export OPENCLAW_EXTRA_MOUNTS
-export OPENCLAW_HOME_VOLUME
-
 # Generate token if not present
 if [[ -z "${OPENCLAW_GATEWAY_TOKEN:-}" ]]; then
   # Try to read from .env if not exported
@@ -51,7 +26,6 @@ PY
     fi
   fi
 fi
-export OPENCLAW_GATEWAY_TOKEN
 
 upsert_env() {
   local file="$1"
@@ -90,16 +64,9 @@ upsert_env() {
   mv "$tmp" "$file"
 }
 
-upsert_env "$ENV_FILE" \
-  OPENCLAW_CONFIG_DIR \
-  OPENCLAW_WORKSPACE_DIR \
-  OPENCLAW_GATEWAY_PORT \
-  OPENCLAW_BRIDGE_PORT \
-  OPENCLAW_GATEWAY_BIND \
-  OPENCLAW_GATEWAY_TOKEN \
-  OPENCLAW_IMAGE \
-  OPENCLAW_EXTRA_MOUNTS \
-  OPENCLAW_HOME_VOLUME \
-  OPENCLAW_DOCKER_APT_PACKAGES
+# Only write the token to .env.
+# Other variables (OPENCLAW_CONFIG_DIR, etc.) are handled by docker-compose.dev.yml
+export OPENCLAW_GATEWAY_TOKEN
+upsert_env "$ENV_FILE" OPENCLAW_GATEWAY_TOKEN
 
-echo "Environment variables initialized in $ENV_FILE"
+echo "Secrets initialized in $ENV_FILE"
