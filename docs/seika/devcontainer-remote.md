@@ -24,6 +24,22 @@ git clone <repository-url> fried-shrimp
 cd fried-shrimp
 ```
 
+### `dotenvx` のインストール
+
+`.env` の復号化や環境変数の読み込みに `dotenvx` を使用します。VPS にインストールされていない場合は、以下のいずれかの方法でインストールしてください。
+
+#### Option A: スタンドアロンバイナリ (推奨)
+
+```bash
+curl -sfS https://dotenvx.sh | sudo sh
+```
+
+#### Option B: npm 経由
+
+```bash
+npm install -g @dotenvx/dotenvx
+```
+
 ### `.env` ファイルの復号化
 
 このプロジェクトでは `.env` ファイルが `dotenvx` によって暗号化されています。
@@ -47,9 +63,9 @@ Dev Container (Docker Compose) が環境変数を正しく読み込めるよう�
 
    > **注意**: これにより `.env` ファイルの内容が平文に書き換わります。`git status` で差分が表示されますが、**この変更は絶対にコミットしないでください**。
 
-3. **環境変数の初期化 (トークン生成)**:
-   Dev Container の起動に必要なシークレット（`OPENCLAW_GATEWAY_TOKEN`）を `.env` に生成します。
-   ※ パス設定などは `docker-compose.dev.yml` で自動設定されるため、このスクリプトはトークンのみを扱います。
+3. **環境変数の初期化 (トークン取得)**:
+   暗号化された `.env` から `OPENCLAW_GATEWAY_TOKEN` を復号化して取得するためのスクリプトを実行します。
+   このスクリプトは `dotenvx` (または `npx dotenvx`) を使用してトークンを取得します。
 
    ```bash
    bash .devcontainer/setup-env.sh
