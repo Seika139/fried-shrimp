@@ -1,9 +1,6 @@
 {
   "name": "OpenClaw Dev",
-  "dockerComposeFile": [
-    "../docker-compose.yml",
-    "./docker-compose.dev.yml"
-  ],
+  "dockerComposeFile": ["../docker-compose.yml", "./docker-compose.dev.yml"],
   "service": "openclaw-gateway",
   "workspaceFolder": "/app",
   "customizations": {
@@ -18,5 +15,8 @@
       ]
     }
   },
-  "remoteUser": "node"
+  "remoteUser": "node",
+  "mounts": [
+    "source=${localEnv:HOME}/.openclaw,target=/home/node/.openclaw,type=bind,consistency=cached"
+  ]
 }
