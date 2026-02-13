@@ -47,6 +47,13 @@ Dev Container (Docker Compose) が環境変数を正しく読み込めるよう�
 
    > **注意**: これにより `.env` ファイルの内容が平文に書き換わります。`git status` で差分が表示されますが、**この変更は絶対にコミットしないでください**。
 
+3. **環境変数の初期化**:
+   Dev Container の起動に必要な環境変数を `.env` に設定します。
+
+   ```bash
+   bash .devcontainer/setup-env.sh
+   ```
+
 ## 2. VS Code からの接続
 
 ローカルマシンの VS Code からリモートサーバーに接続し、Dev Container を起動します。

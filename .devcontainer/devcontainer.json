@@ -3,6 +3,7 @@
   "dockerComposeFile": ["../docker-compose.yml", "./docker-compose.dev.yml"],
   "service": "openclaw-gateway",
   "workspaceFolder": "/app",
+  "initializeCommand": "bash .devcontainer/setup-env.sh",
   "customizations": {
     "vscode": {
       "extensions": [
