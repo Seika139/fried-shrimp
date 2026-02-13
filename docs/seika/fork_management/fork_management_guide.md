@@ -49,23 +49,23 @@ mise run follow-upstream
 
 1. **同期用ブランチの作成とプッシュ**:
 
-    ```bash
-    git checkout main
-    git checkout -b sync-upstream-to-develop
-    git push origin sync-upstream-to-develop
-    ```
+   ```bash
+   git checkout main
+   git checkout -b sync-upstream-to-develop
+   git push origin sync-upstream-to-develop
+   ```
 
 2. **GitHub で PR を作成**:
-    - `base: develop` ← `compare: sync-upstream-to-develop` の PR を作成します。
+   - `base: develop` ← `compare: sync-upstream-to-develop` の PR を作成します。
 3. **マージと後片付け**:
-    - GitHub 上で PR をマージします。
-    - ローカルに戻り、作業を再開します。
+   - GitHub 上で PR をマージします。
+   - ローカルに戻り、作業を再開します。
 
-    ```bash
-    git checkout develop
-    git pull origin develop
-    git branch -d sync-upstream-to-develop
-    ```
+   ```bash
+   git checkout develop
+   git pull origin develop
+   git branch -d sync-upstream-to-develop
+   ```
 
 ---
 
@@ -81,3 +81,30 @@ mise run follow-upstream
 
 - **GitHub の "Sync fork" ボタンは使わない**: `main` を直接更新するボタンですが、履歴をクリーンに保つため `mise run follow-upstream` (CLI) の使用を推奨します。
 - **自分の変更は常に PR で**: デフォルトブランチ (`develop`) は保護されているため、直接のプッシュはエラーになります。
+
+---
+
+## 7. Bypass による更新
+
+develop ブランチを GitHub に push する bypass 設定を一時的に有効化している。
+この場合は、ローカルで
+
+```bash
+mise run follow-upstream
+git checkout develop
+git merge main
+```
+
+をして main ブランチを develop にマージ、コンフリクトを解消して push すれば対応は完了。
+
+### develop 側で削除したファイルがコンフリクトした場合
+
+当リポジトリでは、元のリポジトリの .github/workflows の大半を使わないので削除した。
+これらのファイルが upstream 側で更新されている場合は
+
+```bash
+git rm <消すべきファイルパス>
+```
+
+を実行して削除を確定させる。
+これでコンフリクトが解消できるはず。
