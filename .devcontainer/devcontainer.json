@@ -1,0 +1,22 @@
+{
+  "name": "OpenClaw Dev",
+  "dockerComposeFile": [
+    "../docker-compose.yml",
+    "./docker-compose.dev.yml"
+  ],
+  "service": "openclaw-gateway",
+  "workspaceFolder": "/app",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "firsttris.vscode-jest-runner",
+        "DavidAnson.vscode-markdownlint",
+        "Orta.vscode-jest",
+        "tamasfe.even-better-toml"
+      ]
+    }
+  },
+  "remoteUser": "node"
+}
