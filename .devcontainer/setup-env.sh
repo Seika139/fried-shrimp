@@ -62,11 +62,38 @@ PY
   fi
 fi
 
+# Define default values for paths needed by docker-compose
+# Since we removed these from .env, we must ensure they are set here.
+OPENCLAW_CONFIG_DIR="${OPENCLAW_CONFIG_DIR:-$HOME/.openclaw}"
+OPENCLAW_WORKSPACE_DIR="${OPENCLAW_WORKSPACE_DIR:-$HOME/.openclaw/workspace}"
+OPENCLAW_GATEWAY_PORT="${OPENCLAW_GATEWAY_PORT:-18789}"
+OPENCLAW_BRIDGE_PORT="${OPENCLAW_BRIDGE_PORT:-18790}"
+OPENCLAW_GATEWAY_BIND="${OPENCLAW_GATEWAY_BIND:-lan}"
+IMAGE_NAME="${OPENCLAW_IMAGE:-openclaw:local}"
+OPENCLAW_IMAGE="$IMAGE_NAME"
+
 # Write the plain token to a decrypted env file for docker-compose to use
 echo "# Auto-generated decrypted env vars" >"$DECRYPTED_ENV_FILE"
 
 if [[ -n "${OPENCLAW_GATEWAY_TOKEN:-}" ]]; then
   echo "OPENCLAW_GATEWAY_TOKEN=$OPENCLAW_GATEWAY_TOKEN" >>"$DECRYPTED_ENV_FILE"
 fi
+
+# Write other necessary variables
+echo "OPENCLAW_CONFIG_DIR=$OPENCLAW_CONFIG_DIR" >>"$DECRYPTED_ENV_FILE"
+echo "OPENCLAW_WORKSPACE_DIR=$OPENCLAW_WORKSPACE_DIR" >>"$DECRYPTED_ENV_FILE"
+echo "OPENCLAW_GATEWAY_PORT=$OPENCLAW_GATEWAY_PORT" >>"$DECRYPTED_ENV_FILE"
+echo "OPENCLAW_BRIDGE_PORT=$OPENCLAW_BRIDGE_PORT" >>"$DECRYPTED_ENV_FILE"
+echo "OPENCLAW_GATEWAY_BIND=$OPENCLAW_GATEWAY_BIND" >>"$DECRYPTED_ENV_FILE"
+echo "OPENCLAW_IMAGE=$OPENCLAW_IMAGE" >>"$DECRYPTED_ENV_FILE"
+
+# Also write empty placeholders for optional vars to avoid warning if not set
+echo "OPENCLAW_EXTRA_MOUNTS=" >>"$DECRYPTED_ENV_FILE"
+echo "OPENCLAW_HOME_VOLUME=" >>"$DECRYPTED_ENV_FILE"
+echo "OPENCLAW_DOCKER_APT_PACKAGES=" >>"$DECRYPTED_ENV_FILE"
+# These Claude related vars were warning in logs
+echo "CLAUDE_AI_SESSION_KEY=" >>"$DECRYPTED_ENV_FILE"
+echo "CLAUDE_WEB_SESSION_KEY=" >>"$DECRYPTED_ENV_FILE"
+echo "CLAUDE_WEB_COOKIE=" >>"$DECRYPTED_ENV_FILE"
 
 echo "Decrypted variables written to $DECRYPTED_ENV_FILE"
