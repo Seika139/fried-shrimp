@@ -1,6 +1,6 @@
 {
   "name": "OpenClaw Dev",
-  "dockerComposeFile": ["../docker-compose.yml", "./docker-compose.dev.yml"],
+  "dockerComposeFile": ["../docker-compose.yml", "./docker-compose.dev.yml", "./docker-compose.gen.yml"],
   "service": "openclaw-gateway",
   "workspaceFolder": "/app",
   "initializeCommand": "bash .devcontainer/setup-env.sh",

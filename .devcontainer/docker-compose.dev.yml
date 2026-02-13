@@ -14,8 +14,6 @@ services:
     # Typically in devcontainer, we might want to just sleep so user can run terminals, OR run the dev server.
     # Let's run the dev server but allow overriding.
     command: ["pnpm", "gateway:dev"]
-    env_file:
-      - .env.decrypted
     environment:
       OPENCLAW_CONFIG_DIR: /home/node/.openclaw
       OPENCLAW_WORKSPACE_DIR: /home/node/.openclaw/workspace
