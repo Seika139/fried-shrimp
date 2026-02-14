@@ -1,6 +1,6 @@
 services:
   openclaw-gateway:
-    image: ghcr.io/seika139/fried-shrimp:feature-devcontainer
+    # image: ghcr.io/seika139/fried-shrimp:feature-devcontainer
     volumes:
       - ..:/app
     # Use pnpm dev/watch script for hot reloading if available, or just keep it running
