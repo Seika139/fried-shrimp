@@ -79,6 +79,7 @@ echo "Generating $GEN_COMPOSE_FILE..."
 cat > "$GEN_COMPOSE_FILE" <<EOF
 services:
   openclaw-gateway:
+    image: "$OPENCLAW_IMAGE"
     environment:
       # Injected decrypted values
       OPENCLAW_GATEWAY_TOKEN: "$OPENCLAW_GATEWAY_TOKEN"
@@ -97,6 +98,7 @@ services:
       CLAUDE_WEB_COOKIE: ""
 
   openclaw-cli:
+    image: "$OPENCLAW_IMAGE"
     environment:
       OPENCLAW_GATEWAY_TOKEN: "$OPENCLAW_GATEWAY_TOKEN"
       CLAUDE_AI_SESSION_KEY: ""
