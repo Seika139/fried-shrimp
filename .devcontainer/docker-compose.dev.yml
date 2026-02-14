@@ -1,10 +1,6 @@
 services:
   openclaw-gateway:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        OPENCLAW_DOCKER_APT_PACKAGES: ""
+    image: ghcr.io/seika139/fried-shrimp:feature-devcontainer
     volumes:
       - ..:/app
     # Use pnpm dev/watch script for hot reloading if available, or just keep it running
