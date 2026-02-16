@@ -2,7 +2,7 @@ services:
   openclaw-gateway:
     # image: ghcr.io/seika139/fried-shrimp:feature-devcontainer
     volumes:
-      - ..:/app
+      - .:/app
     # Use pnpm dev/watch script for hot reloading if available, or just keep it running
     # The 'dev' script in package.json runs 'node scripts/run-node.mjs'
     # 'gateway:dev' runs 'OPENCLAW_SKIP_CHANNELS=1 ... node scripts/run-node.mjs --dev gateway'
