@@ -8,8 +8,8 @@ services:
     # 'gateway:dev' runs 'OPENCLAW_SKIP_CHANNELS=1 ... node scripts/run-node.mjs --dev gateway'
     # We probably want to start in a way that allows the user to run commands, or just start the gateway.
     # Typically in devcontainer, we might want to just sleep so user can run terminals, OR run the dev server.
-    # Let's run the dev server but allow overriding.
-    command: ["pnpm", "gateway:dev"]
+    # Let's use sleep infinity to ensure the container stays up while VS Code installs the server and extensions.
+    command: ["sleep", "infinity"]
     environment:
       OPENCLAW_CONFIG_DIR: /home/node/.openclaw
       OPENCLAW_WORKSPACE_DIR: /home/node/.openclaw/workspace
