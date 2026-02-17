@@ -16,7 +16,6 @@
       ]
     }
   },
-  "remoteUser": "node",
   "mounts": [
     "source=${localEnv:HOME}/.openclaw,target=/home/node/.openclaw,type=bind,consistency=cached"
   ]

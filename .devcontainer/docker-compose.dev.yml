@@ -1,5 +1,6 @@
 services:
   openclaw-gateway:
+    user: node
     # image: ghcr.io/seika139/fried-shrimp:feature-devcontainer
     volumes:
       - .:/app

@@ -61,6 +61,18 @@ PY
   fi
 fi
 
+# Detect host UID to sync permissions
+HOST_UID=$(id -u)
+# If host is root, run container as root to avoid permission issues.
+# Otherwise, use the 'node' user defined in docker-compose.dev.yml.
+if [[ "$HOST_UID" == "0" ]]; then
+  CONTAINER_USER="root"
+else
+  # On local PCs, VS Code handles UID mapping for the 'node' user automatically
+  # when no explicit user is provided in the generated override.
+  CONTAINER_USER=""
+fi
+
 # Define path values
 OPENCLAW_CONFIG_DIR="${OPENCLAW_CONFIG_DIR:-$HOME/.openclaw}"
 OPENCLAW_WORKSPACE_DIR="${OPENCLAW_WORKSPACE_DIR:-$HOME/.openclaw/workspace}"
@@ -76,10 +88,16 @@ OPENCLAW_IMAGE="$IMAGE_NAME"
 # which would otherwise pick up the encrypted string from .env.
 echo "Generating $GEN_COMPOSE_FILE..."
 
+GEN_USER_LINE=""
+if [[ -n "$CONTAINER_USER" ]]; then
+  GEN_USER_LINE="user: \"$CONTAINER_USER\""
+fi
+
 cat > "$GEN_COMPOSE_FILE" <<EOF
 services:
   openclaw-gateway:
     image: "$OPENCLAW_IMAGE"
+    $GEN_USER_LINE
     environment:
       # Injected decrypted values
       OPENCLAW_GATEWAY_TOKEN: "$OPENCLAW_GATEWAY_TOKEN"
@@ -99,6 +117,7 @@ services:
 
   openclaw-cli:
     image: "$OPENCLAW_IMAGE"
+    $GEN_USER_LINE
     environment:
       OPENCLAW_GATEWAY_TOKEN: "$OPENCLAW_GATEWAY_TOKEN"
       CLAUDE_AI_SESSION_KEY: ""
