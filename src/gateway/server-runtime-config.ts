@@ -27,6 +27,7 @@ export type GatewayRuntimeConfig = {
   tailscaleMode: "off" | "serve" | "funnel";
   hooksConfig: ReturnType<typeof resolveHooksConfig>;
   canvasHostEnabled: boolean;
+  allowInsecureControlUi: boolean;
 };
 
 export async function resolveGatewayRuntimeConfig(params: {
@@ -120,5 +121,6 @@ export async function resolveGatewayRuntimeConfig(params: {
     tailscaleMode,
     hooksConfig,
     canvasHostEnabled,
+    allowInsecureControlUi: process.env.OPENCLAW_GATEWAY_ALLOW_INSECURE_CONTROL_UI === "true",
   };
 }

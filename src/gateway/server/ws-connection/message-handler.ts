@@ -462,7 +462,7 @@ export function attachGatewayWsMessageHandler(params: {
         if (!device) {
           const canSkipDevice = sharedAuthOk;
 
-          if (isControlUi && !allowControlUiBypass) {
+          if (isControlUi && !allowControlUiBypass && !config.allowInsecureControlUi) {
             const errorMessage = "control ui requires HTTPS or localhost (secure context)";
             setHandshakeState("failed");
             setCloseCause("control-ui-insecure-auth", {
