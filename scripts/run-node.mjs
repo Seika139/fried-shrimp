@@ -37,13 +37,24 @@ const isExcludedSource = (filePath) => {
 };
 
 const findLatestMtime = (dirPath, shouldSkip) => {
+  const start = Date.now();
+  logRunner(`Scanning for changes in ${dirPath}...`);
   let latest = null;
   const queue = [dirPath];
+  const visited = new Set();
+
   while (queue.length > 0) {
     const current = queue.pop();
-    if (!current) {
+    if (!current || visited.has(current)) {
       continue;
     }
+    visited.add(current);
+
+    const base = path.basename(current);
+    if (base === "node_modules" || base === ".git" || base === ".next" || base === "dist") {
+      continue;
+    }
+
     let entries = [];
     try {
       entries = fs.readdirSync(current, { withFileTypes: true });
@@ -71,6 +82,7 @@ const findLatestMtime = (dirPath, shouldSkip) => {
       }
     }
   }
+  logRunner(`Scan completed in ${Date.now() - start}ms.`);
   return latest;
 };
 
