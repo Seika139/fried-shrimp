@@ -21,14 +21,14 @@
       "installZsh": true,
       "configureZshAsDefaultShell": false
     },
-    "ghcr.io/devcontainers-contrib/features/fzf:1": {},
-    "ghcr.io/devcontainers-contrib/features/fd:1": {},
+    "ghcr.io/devcontainers-contrib/features/apt-packages:1": {
+      "packages": "fzf,ripgrep,fd-find,zoxide"
+    },
     "ghcr.io/devcontainers-contrib/features/eza:1": {},
-    "ghcr.io/devcontainers-contrib/features/zoxide:1": {},
-    "ghcr.io/devcontainers-contrib/features/ripgrep:1": {},
-    "ghcr.io/devcontainers-contrib/features/dotenvx:1": {},
-    "ghcr.io/devcontainers-contrib/features/mise:1": {}
+    "ghcr.io/devcontainers-contrib/features/mise:1": {},
+    "ghcr.io/devcontainers-contrib/features/dotenvx:1": {}
   },
+  "postCreateCommand": "mkdir -p ~/.local/bin && ln -s $(which fdfind) ~/.local/bin/fd || true",
   "mounts": [
     "source=${localEnv:HOME}/.openclaw,target=/home/node/.openclaw,type=bind,consistency=cached"
   ]

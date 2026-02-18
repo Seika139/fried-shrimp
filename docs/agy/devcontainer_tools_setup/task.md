@@ -1,6 +1,6 @@
-# Devcontainerへのツール追加
+# Devcontainer ビルド失敗の解決
 
-- [x] 調査と計画 [/]
+- [ ] 失敗原因の分析 [x]
+- [x] 安定した代替 Features の選定 [/]
 - [x] `devcontainer.json` の更新 [ ]
-- [x] 動作確認（構文確認） [ ]
-- [x] 完了報告 [ ]
+- [x] 再検証 [ ]
