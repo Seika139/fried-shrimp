@@ -16,10 +16,27 @@ fi
 mise trust -a
 mise use -g eza
 
-# --- Tailscale Installation ---
+# --- Tailscale Installation & Daemon ---
 if ! command -v tailscale >/dev/null 2>&1; then
   echo "Installing Tailscale..."
   curl -fsSL https://tailscale.com/install.sh | sh
+fi
+
+if command -v tailscaled >/dev/null 2>&1; then
+  if ! pgrep tailscaled >/dev/null 2>&1; then
+    echo "Starting tailscaled..."
+    mkdir -p /var/run/tailscale /var/lib/tailscale
+    tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/var/run/tailscale/tailscaled.sock > /dev/null 2>&1 &
+    
+    # Wait for the socket to become available
+    for i in {1..20}; do
+      if [ -S /var/run/tailscale/tailscaled.sock ]; then
+        echo "tailscaled is ready."
+        break
+      fi
+      sleep 0.5
+    done
+  fi
 fi
 
 echo "Post-create setup complete."
