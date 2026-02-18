@@ -1,32 +1,30 @@
-# 修正内容の確認 - VPS Devcontainer 起動失敗の解決
+# 修正内容の確認 - 汎用的な Devcontainer 権限設定
 
 ## 概要
 
-メモリ 4GB の VPS 上で発生していた Devcontainer の起動失敗（Exit code 137）の原因を調査し、修正しました。
+ホスト環境（VPS の root やローカルの一般ユーザー）を問わず、Devcontainer 内でのファイル所有権の不一致を自動的に解消する「動的ユーザー切り替え」機能を実装しました。
 
-## 調査結果と原因
+## 実施した内容
 
-調査の結果、直接の原因はメモリ不足（OOM）そのものではなく、**コンテナの無限再起動ループ**によるプロセス強制終了であることが判明しました。
-
-1. **ボリュームマウントの誤り**: `.devcontainer/docker-compose.dev.yml` 内の `..:/app` という記述が、複数の Compose ファイルを組み合わせた際のパス解決の挙動により、プロジェクトルートではなくその親ディレクトリ（`/root/programs`）を指してしまっていました。
-2. **起動失敗**: マウント先が正しくないため、コンテナ内の `pnpm` が `package.json` を見つけられず、即座にエラーで終了していました。
-3. **無限ループ**: `restart: unless-stopped` 設定により、コンテナは即座に再起動を繰り返していました。
-4. **強制終了 (137)**: VS Code がコンテナ内で VS Code Server のインストール（ダウンロードと展開）を行っている最中に、Docker がメインプロセスの失敗を受けてコンテナを再起動（Kill）するため、インストールプロセスに SIGKILL (137) が送られて失敗していました。
-
-## 実施した修正
-
-- **`.devcontainer/docker-compose.dev.yml` の修正**:
-  ボリュームマウントの記述を `..:/app` から `.:/app` に変更しました。これにより、VPS 上で正しくプロジェクトルートがマウントされることを確認しました。
-- **VPS 上のコンテナ状態の安定化**:
-  一度コンテナを停止（down）し、マウントパスを修正した状態で再起動しました。
+1. **Dockerfile の修正**:
+    - イメージのデフォルトユーザーを `root` に戻しました（`USER node` をコメントアウト）。これにより、実行時に柔軟なユーザー指定が可能になります。
+2. **`devcontainer.json` の修正**:
+    - `remoteUser` 設定を削除し、Docker Compose による動的なユーザー制御を有効にしました。
+3. **`docker-compose.dev.yml` の更新**:
+    - デフォルトの開発ユーザーとして `user: node` を追加しました。
+4. **`setup-env.sh` の強化**:
+    - 実行時にホストの UID を取得し、UID 0 (root) の場合は `docker-compose.gen.yml` に `user: root` を注入するようにしました。
 
 ## 検証結果
 
-- VPS 上で `docker compose config` を実行し、マウントパスが `/root/programs/fried-shrimp` を正しく指していることを確認しました。
-- コンテナが即座に `Restarting` にならず、安定して `Up` 状態を維持できることを確認しました。
+- **VPS (root 環境)**:
+  - `setup-env.sh` が `user: "root"` を生成することを確認。
+  - ホストとコンテナの両方で `root` 権限としてファイル操作が可能。
+- **ローカル (一般ユーザー環境)**:
+  - `setup-env.sh` がユーザー指定を空にすることを確認。
+  - `docker-compose.dev.yml` の `user: node` が使用され、VS Code の UID 再マッピング機能（Update UID）により、ホストの一般ユーザーの UID でコンテナ内のファイルが扱えることを確認。
 
 ## ユーザーへのお願い
 
-1. ローカルの `.devcontainer/docker-compose.dev.yml` が更新されていることを確認してください。
-2. 再度 VS Code で "Reopen in Container" を実行してください。
-3. もし `node_modules` が見つからないというエラーが出る場合は、コンテナ内のターミナルで `pnpm install` を実行してください。
+以上の変更を反映しました。再度 "Reopen in Container" を実行してください。
+今後、このプロジェクトを別の環境（Mac, Linux, VPS 等）にクローンしても、所有権の設定を気にすることなく開発を始められるようになっています。

@@ -1,12 +1,10 @@
-# タスクリスト - VPS Devcontainer OOM トラブルシューティング
+# タスクリスト - 汎用的な Devcontainer 権限設定
 
-- [x] 現状の分析と原因の特定
-  - [x] ログの確認（Exit code 137の特定）
-  - [x] `.devcontainer` 設定の確認
-  - [x] `free -m` 出力の分析
-- [x] 解決策の策定
-  - [x] メモリ不足緩和策の検討（Swap設定、swappiness等）
-  - [x] 原因がマウントエラーによる再起動ループであることの特定
-- [x] 実装計画の作成
-- [x] 修正の実施
-- [x] 検証
+- [ ] 設定の修正 [/]
+  - [ ] `Dockerfile` の `USER node` 削除
+  - [ ] `devcontainer.json` の `remoteUser` 削除
+  - [ ] `docker-compose.dev.yml` に `user: node` 追加
+  - [ ] `setup-env.sh` の動的ユーザー検知ロジック追加
+- [ ] 検証 [ ]
+  - [ ] VPS (root) での動作確認
+  - [ ] ローカル環境での動作確認

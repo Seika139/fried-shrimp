@@ -1,64 +1,43 @@
-# 実装計画 - VPS Devcontainer OOM トラブルシューティング
+# 実装計画 - 汎用的な Devcontainer 権限設定
 
 ## 概要
 
-メモリ 4GB の VPS 環境において、Devcontainer の起動（特に VS Code Server のインストール）中にプロセスが強制終了（Exit code 137）される問題を解決します。
+ホスト（VPS/ローカルPC）のユーザーが `root` か一般ユーザーかに関わらず、所有権の不一致を自動的に解消する構成を導入します。これにより、どのような環境でもファイルの編集・保存が制限なく行えるようになります。
 
-## 背景・原因分析
+## 解決策
 
-`free -m` の結果から、以下の状態が推測されます：
+VS Code の仕様と `docker-compose.gen.yml` の生成機能を組み合わせることで、動的にユーザーを切り替えます。
 
-- `available` (3.1Gi) は十分にあるように見えますが、`free` (112Mi) は非常に低いです。
-- `buff/cache` (3.3Gi) がメモリの大部分を占めています。
-- VS Code Server のダウンロードや展開はディスク I/O を伴い、キャッシュをさらに圧迫します。
-- **原因の推測**: カーネルがキャッシュを解放して新しいプロセスにメモリを割り当てる速度よりも、急激なメモリ要求が上回った場合、あるいは I/O 待ちでキャッシュが「汚れて」いて即座に解放できない場合に、OOM キラーが作動して SIGKILL (137) を送っている可能性があります。
-- Swap (2GB) がほとんど利用されていないのも、メモリ不足が急激すぎてスワップアウトが追いつかなかった可能性を示唆しています。
+### 1. `Dockerfile` の修正
 
-## 提案する対策
+Dockerfile の末尾にある `USER node` を削除（またはコメントアウト）し、イメージのデフォルトユーザーを `root` に戻します。
+> [!NOTE]
+> これは動的なユーザー切り替えを確実にするためのベースラインです。
 
-### 1. 原因の確定（dmesg の確認）
+### 2. `devcontainer.json` の修正
 
-実際に OOM キラーが作動したのかを確認します。VPS ターミナルで以下を実行してください。
+`"remoteUser": "node"` を削除します。これにより、VS Code は Compose ファイルで指定されたユーザーを使用するようになります。
 
-```bash
-dmesg -T | grep -i oom
-```
+### 3. `docker-compose.dev.yml` の修正
 
-または
+デフォルトの開発用ユーザーとして `user: node` を指定します。これが非 root ホスト環境でのデフォルトとなります。
 
-```bash
-journalctl -xe | grep -i "out of memory"
-```
+### 4. `setup-env.sh` の拡張
 
-### 2. VPS カーネル設定の調整
+ホストの UID をチェックするロジックを追加します。
 
-スワップをより積極的に利用し、急激なメモリ圧迫を緩和します。
+- **ホストが root (UID: 0) の場合**: `docker-compose.gen.yml` に `user: root` を書き込み、上位の設定をオーバーライドします。
+- **ホストが一般ユーザーの場合**: 特に何もしない（あるいは `user: node` を明示）ことで、VS Code の UID 自動調整機能（Update UID）を働かせます。
 
-#### swappiness の変更
+## 実施手順
 
-```bash
-sudo sysctl vm.swappiness=60
-```
-
-（デフォルトの 10 などが低すぎる場合、キャッシュ解放よりもプロセスの殺害が優先されるケースがあります）
-
-### 3. Swap 領域の増設（推奨）
-
-現在 2GB ですが、4GB 程度に増設しておくとより安心です。
-
-```bash
-sudo swapoff /swapfile
-sudo fallocate -l 4G /swapfile
-sudo chmod 600 /swapfile
-sudo mkswap /swapfile
-sudo swapon /swapfile
-```
-
-## 変更内容
-
-現時点ではコードの自動修正よりも、環境設定の調整を優先します。
+1. `Dockerfile` の `USER node` を削除。
+2. `devcontainer.json` の `remoteUser` を削除。
+3. `docker-compose.dev.yml` に `user: node` を追加。
+4. `setup-env.sh` にユーザー検知とオーバーライド生成ロジックを追加。
 
 ## 検証計画
 
-1. ユーザーに `dmesg` で OOM を確認していただく。
-2. `vm.swappiness` の調整または Swap 増設後、再度 "Reopen in Container" を実行。
+- **VPS (root)**: `docker exec -it <id> id` を実行し、`root` (UID 0) で動作していることを確認。
+- **ローカル (一般ユーザー)**: 同様に実行し、UID がホストと同じ値に調整された `node` ユーザーであることを確認。
+- 両環境で `touch` コマンド等によるファイル作成・編集をテスト。
