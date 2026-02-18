@@ -247,6 +247,7 @@ export async function authorizeGatewayConnect(params: {
       return { ok: false, reason: "token_missing" };
     }
     if (!safeEqualSecret(connectAuth.token, auth.token)) {
+      console.log(`[AUTH DEBUG] token mismatch: expected "${auth.token.slice(0, 4)}...", got "${connectAuth.token.slice(0, 4)}..."`);
       return { ok: false, reason: "token_mismatch" };
     }
     return { ok: true, method: "token" };
