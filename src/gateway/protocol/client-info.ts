@@ -11,6 +11,7 @@ export const GATEWAY_CLIENT_IDS = {
   TEST: "test",
   FINGERPRINT: "fingerprint",
   PROBE: "openclaw-probe",
+  MOLTBOT_CONTROL_UI: "moltbot-control-ui",
 } as const;
 
 export type GatewayClientId = (typeof GATEWAY_CLIENT_IDS)[keyof typeof GATEWAY_CLIENT_IDS];
