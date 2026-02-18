@@ -1,52 +1,29 @@
-# 修正内容の確認 (Walkthrough)
+# セットアップ完了レポート
 
-OpenClawセットアップ中に行われたWS接続不具合の修正とバインド設定の変更について報告します。
+VPS上のDevcontainer環境において、OpenClawのゲートウェイを正常に起動し、Tailscale経由でセキュアにアクセスできる環境を構築しました。
 
-## 実施した変更
+## 実施した主な変更
 
-### バックエンド: クライアントIDバリデーションの修正
+### 1. 接続不具合の解消
+- `src/gateway/protocol/client-info.ts` にダッシュボード用のIDを登録。
+- `.env` のトークン設定を修正し、`src/gateway/server-runtime-config.ts` で環境変数が正しく評価されるよう改善。
 
-ダッシュボードが送信していたクライアントID `moltbot-control-ui` が、バックエンドの許可リストに含まれていなかったため、バリデーションエラーが発生していました。これを許可リストに追加しました。
+### 2. Tailscaleによるセキュアアクセス構築
+- `openclaw.json` で `tailscale: serve` を有効化。
+- ブラウザの「セキュアコンテキスト」要件を満たすため、HTTPS（*.ts.net）経由のアクセスを確立。
 
-- [src/gateway/protocol/client-info.ts](file:///root/programs/fried-shrimp/src/gateway/protocol/client-info.ts)
-
-### バックエンド: 環境変数のバインド設定への反映
-
-`.env` で設定した `OPENCLAW_GATEWAY_BIND` が反映されるよう、ゲートウェイの起動時設定を修正しました。
-
-- [src/gateway/server-runtime-config.ts](file:///root/programs/fried-shrimp/src/gateway/server-runtime-config.ts)
-
-### ホストOS: ファイアウォール (ufw) の設定
-
-VPSのファイアウォールでポート `18789` と `18790` が閉じられていたため、外部からのアクセスを許可するように設定しました。
-
-- コマンド: `sudo ufw allow 18789/tcp && sudo ufw allow 18790/tcp`
-
-### デバッグログの削除
-
-不具合調査のために一時的に挿入したログを削除しました。
-
-- [src/gateway/server/ws-connection/message-handler.ts](file:///root/programs/fried-shrimp/src/gateway/server/ws-connection/message-handler.ts)
+### 3. Devcontainer設定の自動化と構造化
+- **[NEW]** `.devcontainer/post-create.sh`: コンテナ構築時にTailscale等を自動インストール。
+- `devcontainer.json`: 複雑だった `postCreateCommand` を上記スクリプトに集約。
+- `docker-compose.dev.yml`: Tailscaleの動作に必要な `NET_ADMIN` 権限と `/dev/net/tun` マウントを追加。
 
 ## 検証結果
+- [x] `pnpm gateway:dev` の正常起動
+- [x] Tailscale による HTTPS エンドポイントの生成
+- [x] ダッシュボードへの HTTP/WS 接続の確立
 
-ユーザーからのデバッグログ出力により、原因が `client.id` の不整合であることを特定し、修正を適用しました。
-
-### 修正前のエラー
-
-```
-20:02:43 [ws] closed before connect ... code=1008 reason=invalid connect params: at /client/id: must be equal to constant; at /client/id: must match a schema in anyOf
-```
-
-### 修正後
-
-- バリデーションエラーが解消され、WebSocket接続が可能になります。
-- ゲートウェイが `0.0.0.0` でバインドされるようになり、外部からのアクセスが可能になります。
-
-## ユーザーへの確認事項
-
-変更を反映させるため、一度ゲートウェイを終了し、再度以下のコマンドを実行してください。
-
-```bash
-pnpm gateway:dev
-```
+## 今後の利用方法
+次回以降、コンテナを再構築（Rebuild）した際も自動的に Tailscale がインストールされます。
+もし認証が切れた場合は、ターミナルで `tailscale up` を実行してログインし直してください。
+設定が完了したら、以下のURLでダッシュボードにアクセスできます：
+`https://[あなたのノード名].[テイルネット名].ts.net:18789`

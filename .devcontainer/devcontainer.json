@@ -26,7 +26,7 @@
     },
     "ghcr.io/devcontainers-contrib/features/mise:1": {}
   },
-  "postCreateCommand": "mkdir -p ~/.local/bin && ln -s $(which fdfind) ~/.local/bin/fd || true && curl -sfS https://dotenvx.sh/install.sh | sh && mise trust -a && mise use -g eza",
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
   "mounts": [
     "source=${localEnv:HOME}/.openclaw,target=/home/node/.openclaw,type=bind,consistency=cached"
   ]

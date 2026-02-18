@@ -1,27 +1,23 @@
-# Tailscaleによるセキュアアクセスの確立
+# Devcontainer設定の構造化と自動化
 
-Tailscaleの「Serve/Funnel」機能を利用して、OpenClawのゲートウェイに HTTPS でアクセスできる環境を構築します。
-
-## ユーザー承認が必要な項目
-
-- **Tailscaleの認証**: ゲートウェイ起動時にログインURLが表示されるので、ブラウザで認証を行う必要があります。
+Tailscaleのインストールを含むセットアップ処理を専用スクリプトに分離し、コンテナ構築時に自動実行されるようにします。
 
 ## 変更内容
 
-### ゲートウェイ設定
+### セットアップスクリプト
+#### [NEW] [post-create.sh](file:///root/programs/fried-shrimp/.devcontainer/post-create.sh)
+- 既存の `postCreateCommand` のロジック（fdのリンク作成、dotenvxインストール、mise設定）を移動。
+- Tailscale のインストールコマンドを追加。
 
-#### [MODIFY] [openclaw.json](file:///root/.openclaw/openclaw.json)
+### Devcontainer設定
+#### [MODIFY] [devcontainer.json](file:///root/programs/fried-shrimp/.devcontainer/devcontainer.json)
+- `postCreateCommand` を `"bash .devcontainer/post-create.sh"` に変更。
 
-- `gateway.tailscale.mode` を `"serve"` に変更します。
-- `gateway.bind` が `"loopback"` であることを確認します（Tailscale利用時の必須条件）。
-
-#### [MODIFY] [.env](file:///root/programs/fried-shrimp/.env)
-
-- `OPENCLAW_GATEWAY_BIND` を削除、または `loopback` に設定します（`.env` の設定が優先されるため、`lan` のままだとTailscaleがエラーになります）。
+#### [MODIFY] [docker-compose.dev.yml](file:///root/programs/fried-shrimp/.devcontainer/docker-compose.dev.yml)
+- `cap_add: [NET_ADMIN]` を追加。
+- `devices: ["/dev/net/tun:/dev/net/tun"]` を追加。
 
 ## 実行・検証手順
-
-1. ゲートウェイを起動: `pnpm gateway:dev`
-2. ターミナルに表示される Tailscale の `Login URL` をクリックして認証。
-3. 認証完了後、ターミナルに表示される `https://[node-name].[your-tailnet].ts.net` というURLでダッシュボードにアクセス。
-4. ブラウザのセキュリティエラーが消え、正常に動作することを確認。
+1. ファイルを作成・修正。
+2. （ユーザー側で）Devcontainer を **Rebuild**。
+3. 起動後、`tailscale --version` および `fd --version` が動作し、環境変数が正しくセットされていることを確認。
