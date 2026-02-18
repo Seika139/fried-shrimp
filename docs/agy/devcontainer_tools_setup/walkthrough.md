@@ -10,14 +10,14 @@ devcontainer 環境において、要求された CLI ツールを利用可能�
 
 - `ghcr.io/devcontainers/features/common-utils:1` (bash をデフォルトに維持)
 - `ghcr.io/devcontainers-contrib/features/apt-packages:1` (標準ツールのインストール)
-  - `fzf`, `ripgrep`, `fd-find`, `zoxide` を導入
-- `ghcr.io/devcontainers-contrib/features/eza:1`
-- `ghcr.io/devcontainers-contrib/features/mise:1`
-- `ghcr.io/devcontainers-contrib/features/dotenvx:1`
+  - `fzf`, `ripgrep`, `fd-find`, `zoxide`, `less` を導入
+- `ghcr.io/devcontainers-contrib/features/mise:1` (バージョン管理ツール)
 
-#### 追加設定
+#### 追加設定 (`postCreateCommand`)
 
-- `postCreateCommand` を使用して、`fdfind` を `fd` として利用できるようにエイリアス（シンボリックリンク）を設定しました。
+- **fd コマンド**: Debian の `fdfind` を `fd` として利用できるようシンボリックリンクを作成。
+- **dotenvx**: 公式インストールスクリプトを使用して導入。
+- **eza**: `mise` を利用して導入。
 
 ## 検証結果
 

@@ -22,13 +22,11 @@
       "configureZshAsDefaultShell": false
     },
     "ghcr.io/devcontainers-contrib/features/apt-packages:1": {
-      "packages": "fzf,ripgrep,fd-find,zoxide"
+      "packages": "fzf,ripgrep,fd-find,zoxide,less"
     },
-    "ghcr.io/devcontainers-contrib/features/eza:1": {},
-    "ghcr.io/devcontainers-contrib/features/mise:1": {},
-    "ghcr.io/devcontainers-contrib/features/dotenvx:1": {}
+    "ghcr.io/devcontainers-contrib/features/mise:1": {}
   },
-  "postCreateCommand": "mkdir -p ~/.local/bin && ln -s $(which fdfind) ~/.local/bin/fd || true",
+  "postCreateCommand": "mkdir -p ~/.local/bin && ln -s $(which fdfind) ~/.local/bin/fd || true && curl -sfS https://dotenvx.sh/install.sh | sh && mise use -g eza",
   "mounts": [
     "source=${localEnv:HOME}/.openclaw,target=/home/node/.openclaw,type=bind,consistency=cached"
   ]
