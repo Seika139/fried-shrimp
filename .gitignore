@@ -128,3 +128,4 @@ terraform.rc
 
 ## dotenvx
 .env.keys
+.env
