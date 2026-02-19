@@ -17,18 +17,6 @@ run = '''
 find ./mise -name "*.sh" -exec chmod +x {} \;
 '''
 
-[tasks.encrypt]
-description = "暗号化された .env.keys を生成する"
-shell = "bash -c"
-quiet = true
-run = "dotenvx encrypt"
-
-[tasks.decrypt]
-description = "暗号化された .env.keys を復号化する"
-shell = "bash -c"
-quiet = true
-run = "dotenvx decrypt"
-
 [tasks.check]
 description = "コードの静的解析とテストを実行します"
 shell = "bash -c"
