@@ -83,7 +83,9 @@ function formatGatewayAuthFailureMessage(params: {
 }): string {
   const { authMode, authProvided, reason, client } = params;
   const isCli = isGatewayCliClient(client);
-  const isControlUi = client?.id === GATEWAY_CLIENT_IDS.CONTROL_UI;
+  const isControlUi =
+    client?.id === GATEWAY_CLIENT_IDS.CONTROL_UI ||
+    client?.id === GATEWAY_CLIENT_IDS.MOLTBOT_CONTROL_UI;
   const isWebchat = isWebchatClient(client);
   const uiHint = "open the dashboard URL and paste the token in Control UI settings";
   const tokenHint = isCli
@@ -361,7 +363,9 @@ export function attachGatewayWsMessageHandler(params: {
         connectParams.role = role;
         connectParams.scopes = scopes;
 
-        const isControlUi = connectParams.client.id === GATEWAY_CLIENT_IDS.CONTROL_UI;
+        const isControlUi =
+          connectParams.client.id === GATEWAY_CLIENT_IDS.CONTROL_UI ||
+          connectParams.client.id === GATEWAY_CLIENT_IDS.MOLTBOT_CONTROL_UI;
         const isWebchat = isWebchatConnect(connectParams);
         if (isControlUi || isWebchat) {
           const originCheck = checkBrowserOrigin({
@@ -400,6 +404,7 @@ export function attachGatewayWsMessageHandler(params: {
         const hasSharedAuth = hasTokenAuth || hasPasswordAuth;
         const allowInsecureControlUi =
           isControlUi && configSnapshot.gateway?.controlUi?.allowInsecureAuth === true;
+        console.log(`[DEBUG] isControlUi=${isControlUi}, client.id=${connectParams.client.id}, allowInsecureAuth=${configSnapshot.gateway?.controlUi?.allowInsecureAuth}, allowInsecureControlUi=${allowInsecureControlUi}`);
         const disableControlUiDeviceAuth =
           isControlUi && configSnapshot.gateway?.controlUi?.dangerouslyDisableDeviceAuth === true;
         const allowControlUiBypass = allowInsecureControlUi || disableControlUiDeviceAuth;
@@ -462,7 +467,7 @@ export function attachGatewayWsMessageHandler(params: {
         if (!device) {
           const canSkipDevice = sharedAuthOk;
 
-          if (isControlUi && !allowControlUiBypass && !config.allowInsecureControlUi) {
+          if (isControlUi && !allowControlUiBypass) {
             const errorMessage = "control ui requires HTTPS or localhost (secure context)";
             setHandshakeState("failed");
             setCloseCause("control-ui-insecure-auth", {
