@@ -7,10 +7,6 @@ if command -v fdfind >/dev/null 2>&1 && [ ! -L ~/.local/bin/fd ]; then
   ln -s $(which fdfind) ~/.local/bin/fd
 fi
 
-# --- Essential Tools ---
-if ! command -v dotenvx >/dev/null 2>&1; then
-  curl -sfS https://dotenvx.sh/install.sh | sh
-fi
 
 # --- Mise configuration ---
 mise trust -a

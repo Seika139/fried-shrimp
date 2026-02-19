@@ -12,36 +12,14 @@ command_exists() {
   command -v "$1" >/dev/null 2>&1
 }
 
-# Function to run dotenvx
-run_dotenvx() {
-  if command_exists dotenvx; then
-    dotenvx "$@"
-  elif command_exists npx; then
-    npx -y dotenvx "$@"
-  else
-    return 1
-  fi
-}
 
 # Generate token if not present
 if [[ -z "${OPENCLAW_GATEWAY_TOKEN:-}" ]]; then
-  # Try to read from .env using dotenvx first (handles encryption)
+  # Try to read from .env
   if [[ -f "$ENV_FILE" ]]; then
-    # Attempt to get the value using dotenvx
-    TOKEN_FROM_DOTENVX=$(run_dotenvx get OPENCLAW_GATEWAY_TOKEN 2>/dev/null || true)
-
-    if [[ -n "$TOKEN_FROM_DOTENVX" ]]; then
-      OPENCLAW_GATEWAY_TOKEN="$TOKEN_FROM_DOTENVX"
-    else
-      # Fallback: grep
-      TOKEN_IN_FILE=$(grep "^OPENCLAW_GATEWAY_TOKEN=" "$ENV_FILE" | cut -d= -f2- || true)
-      if [[ -n "$TOKEN_IN_FILE" ]]; then
-        if [[ "$TOKEN_IN_FILE" == encrypted:* ]]; then
-          echo "Warning: OPENCLAW_GATEWAY_TOKEN is encrypted." >&2
-        else
-          OPENCLAW_GATEWAY_TOKEN="$TOKEN_IN_FILE"
-        fi
-      fi
+    TOKEN_IN_FILE=$(grep "^OPENCLAW_GATEWAY_TOKEN=" "$ENV_FILE" | cut -d= -f2- || true)
+    if [[ -n "$TOKEN_IN_FILE" ]]; then
+      OPENCLAW_GATEWAY_TOKEN="$TOKEN_IN_FILE"
     fi
   fi
 
@@ -126,4 +104,4 @@ services:
 
 EOF
 
-echo "Generated compose overrides with decrypted environment variables."
+echo "Generated compose overrides with environment variables from .env."
