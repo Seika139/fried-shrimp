@@ -404,7 +404,6 @@ export function attachGatewayWsMessageHandler(params: {
         const hasSharedAuth = hasTokenAuth || hasPasswordAuth;
         const allowInsecureControlUi =
           isControlUi && configSnapshot.gateway?.controlUi?.allowInsecureAuth === true;
-        console.log(`[DEBUG] isControlUi=${isControlUi}, client.id=${connectParams.client.id}, allowInsecureAuth=${configSnapshot.gateway?.controlUi?.allowInsecureAuth}, allowInsecureControlUi=${allowInsecureControlUi}`);
         const disableControlUiDeviceAuth =
           isControlUi && configSnapshot.gateway?.controlUi?.dangerouslyDisableDeviceAuth === true;
         const allowControlUiBypass = allowInsecureControlUi || disableControlUiDeviceAuth;
